@@ -17,7 +17,7 @@ export default {
       { hid: 'description', name: 'description', content: '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/profile.png' }
     ]
   },
 
@@ -38,8 +38,33 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/firebase'
   ],
+
+  firebase: {
+    config: {
+      apiKey: 'AIzaSyCeIXPSaWj4nsvr_l1zJEYJKRrMwZuup5k',
+      authDomain: 'dancer-support-f8ef1.firebaseapp.com',
+      databaseURL: 'https://dancer-support-f8ef1.firebaseio.com',
+      projectId: 'dancer-support-f8ef1',
+      storageBucket: 'dancer-support-f8ef1.appspot.com',
+      messagingSenderId: '753133258884',
+      appId: '1:753133258884:web:b40fdae0423481f59edad1',
+      measurementId: 'G-S07CM0E09X'
+    },
+    services: {
+      auth: {
+        initialize: {
+          onAuthStateChangedAction: 'onAuthStateChanged'
+        },
+        emulatorPort: 9099,
+        emulatorHost: 'http://localhost'
+      },
+      performance: true,
+      analytics: true
+    }
+  },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
