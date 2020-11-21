@@ -22,11 +22,11 @@
       <v-card-actions>
         <v-list-item class="grow">
           <v-list-item-avatar color="grey lighten-5">
-            <v-img class="elevation-6" src="../assets/profile.png" />
+            <v-img class="elevation-6" src="profile.png" />
           </v-list-item-avatar>
 
           <v-list-item-content>
-            <v-list-item-title>Evan You</v-list-item-title>
+            <v-list-item-title>Yuma Sumi</v-list-item-title>
           </v-list-item-content>
           <v-row align="center" justify="end">
             <v-badge inline content="100" color="pink darken-1">
