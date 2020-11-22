@@ -70,7 +70,7 @@ export default {
     services: {
       auth: {
         initialize: {
-          onAuthStateChangedAction: 'onAuthStateChangedAction'
+          onAuthStateChangedAction: 'onAuthStateChanged'
         },
         emulatorPort: 9099,
         emulatorHost: 'http://localhost'
@@ -88,7 +88,6 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content'
-    // '@nuxtjs/firebase'
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
