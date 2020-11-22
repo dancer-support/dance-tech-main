@@ -32,10 +32,10 @@ export default {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: [],
+  css: ['firebaseui/dist/firebaseui.css'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [],
+  plugins: ['@/plugins/firebase'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -120,10 +120,14 @@ export default {
       return entries.map(entry => `/blog/${entry.fields.title}`)
     }
   },
+  router: {
+    middleware: ['auth']
+  },
 
   env: {
     CTF_SPACE_ID: config.CTF_SPACE_ID,
     CTF_CDA_ACCESS_TOKEN: config.CTF_CDA_ACCESS_TOKEN,
     CTF_BLOG_POST_TYPE_ID: config.CTF_BLOG_POST_TYPE_ID
   }
+
 }
