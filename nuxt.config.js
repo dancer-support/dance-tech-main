@@ -72,8 +72,8 @@ export default {
         initialize: {
           onAuthStateChangedAction: 'onAuthStateChanged'
         },
-        emulatorPort: 9099,
-        emulatorHost: 'http://localhost'
+        ssr: true,
+        emulatorPort: process.env.NODE_ENV === 'development' ? 9099 : false
       },
       performance: true,
       analytics: true
