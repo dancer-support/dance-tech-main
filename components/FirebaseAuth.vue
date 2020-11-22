@@ -18,7 +18,7 @@ export default {
         const config = {
           signInOptions: [authProviders.Email, authProviders.Facebook],
           callbacks: {
-            signInSuccessWithAuthResult: (authResult: any) => {
+            signInSuccessWithAuthResult: (authResult) => {
               window.location.href = '/'
               return false
             }

@@ -19,6 +19,7 @@ const config = getConfigForKeys([
 const client = createClient(config)
 
 export default {
+  mode: 'spa',
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
 
