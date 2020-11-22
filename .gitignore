@@ -91,3 +91,5 @@ sw.*
 
 # vscode
 .vscode
+
+static/firebase-auth-sw.js
