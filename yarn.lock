@@ -1922,7 +1922,7 @@
     eslint-plugin-unicorn "^23.0.0"
     eslint-plugin-vue "^7.1.0"
 
-"@nuxtjs/eslint-module@^3.0.0":
+"@nuxtjs/eslint-module@^3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@nuxtjs/eslint-module/-/eslint-module-3.0.1.tgz#885c5d6f82eba7da52bdbdff1672bfe3e514b74d"
   integrity sha512-zy4lOJUECACVHg17AWfulAD7UL+excaCgZ+4dXytZ7WlW8/+pq+oy17ek3QNd4VTPMRv4Q0eqcom7eJy1megdw==
@@ -4301,7 +4301,7 @@ contentful-sdk-core@^6.4.5:
     lodash "^4.17.10"
     qs "^6.5.2"
 
-contentful@^7.14.13:
+contentful@^7.14.14:
   version "7.14.14"
   resolved "https://registry.yarnpkg.com/contentful/-/contentful-7.14.14.tgz#0937eb52624dc93e1b8611df4a61fcaf58d69f39"
   integrity sha512-GruQW2X/EAA1fRSzD3d7jyD8f0kWrO3YY+rthFBTdTlJHCq0J4kQe3Voj21JeL1GHaRtCxR+jV7vq6cgkBu54g==
