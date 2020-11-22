@@ -44,14 +44,14 @@ export default {
 
   firebase: {
     config: {
-      apiKey: 'AIzaSyCeIXPSaWj4nsvr_l1zJEYJKRrMwZuup5k',
-      authDomain: 'dancer-support-f8ef1.firebaseapp.com',
-      databaseURL: 'https://dancer-support-f8ef1.firebaseio.com',
-      projectId: 'dancer-support-f8ef1',
-      storageBucket: 'dancer-support-f8ef1.appspot.com',
-      messagingSenderId: '753133258884',
-      appId: '1:753133258884:web:b40fdae0423481f59edad1',
-      measurementId: 'G-S07CM0E09X'
+      apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
+      authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
+      databaseURL: process.env.VUE_APP_FIREBASE_DATABASE_URL,
+      projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
+      storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
+      appId: process.env.VUE_APP_FIREBASE_APP_ID,
+      measurementId: process.env.VUE_APP_FIREBASE_MEASUREMENT_ID,
     },
     services: {
       auth: {
