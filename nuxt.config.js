@@ -1,4 +1,14 @@
 import colors from 'vuetify/es5/util/colors'
+import { getConfigForKeys } from './lib/config'
+import { createClient } from './plugins/contentful'
+
+const config = getConfigForKeys([
+  'CTF_BLOG_POST_TYPE_ID',
+  'CTF_SPACE_ID',
+  'CTF_CDA_ACCESS_TOKEN'
+])
+
+const client = createClient(config)
 
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
@@ -22,12 +32,10 @@ export default {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: [
-  ],
+  css: [],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [
-  ],
+  plugins: [],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -51,7 +59,7 @@ export default {
       storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
       messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
       appId: process.env.VUE_APP_FIREBASE_APP_ID,
-      measurementId: process.env.VUE_APP_FIREBASE_MEASUREMENT_ID,
+      measurementId: process.env.VUE_APP_FIREBASE_MEASUREMENT_ID
     },
     services: {
       auth: {
@@ -102,6 +110,20 @@ export default {
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {
+  build: {},
+
+  generate: {
+    routes: async () => {
+      const entries = await client.getEntries(config.CTF_BLOG_POST_TYPE_ID)
+      // eslint-disable-next-line no-console
+      console.log('Entries: ', entries)
+      return entries.map(entry => `/blog/${entry.fields.title}`)
+    }
+  },
+
+  env: {
+    CTF_SPACE_ID: config.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: config.CTF_CDA_ACCESS_TOKEN,
+    CTF_BLOG_POST_TYPE_ID: config.CTF_BLOG_POST_TYPE_ID
   }
 }
