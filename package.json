@@ -37,7 +37,7 @@
     "contentful": "^7.14.14",
     "dotenv": "^8.2.0",
     "eslint": "^7.13.0",
-    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-nuxt": "^2.0.0",
     "jest": "^26.6.3",
     "remark-footnotes": "^3.0.0",
     "ts-jest": "^26.4.4",
