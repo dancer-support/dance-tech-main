@@ -35,12 +35,9 @@ export default {
 
   onAuthStateChanged ({ commit }, { authUser }) {
     if (!authUser) {
-      console.log('no user found')
       commit('RESET_STORE')
       return
     }
-    console.log('authUser: ', authUser)
-
     commit('SET_AUTH_USER', { authUser })
   },
 
