@@ -9,6 +9,9 @@
       <v-btn color="primary" @click="logInUser">
         ログイン
       </v-btn>
+      <v-btn color="primary" @click="logout">
+        ログアウト
+      </v-btn>
     </v-container>
   </v-form>
 </template>
@@ -17,9 +20,11 @@ export default {
   data () {
     return {
       email: '',
-      password: ''
+      password: '',
+      loginState: this.$fire.auth.currentUser
     }
   },
+  middleware: 'auth',
   methods: {
     async createUser () {
       try {
