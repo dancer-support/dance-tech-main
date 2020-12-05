@@ -1,4 +1,3 @@
-
 export default {
   async nuxtServerInit ({ dispatch }, ctx) {
     if (this.$fire.auth === null) {
