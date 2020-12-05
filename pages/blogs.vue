@@ -1,21 +1,11 @@
 <template>
   <v-row>
-    <v-col class="text-center">
-      <img src="/v.png" alt="Vuetify.js" class="mb-5">
-      <blockquote class="blockquote">
-        &#8220;YAHOOOOOO&#8221;
-        <footer>
-          <small>
-            <em>&mdash;John Johnson</em>
-          </small>
-        </footer>
-      </blockquote>
+    <v-col v-for="(blog, i) in blogs" :key="i">
       <card
-        v-for="(blog,i) in blogs"
-        :key="i"
         :title="blog.fields.title"
         :text="blog.fields.text"
         :thumbnail="blog.fields.thumbnail"
+        :person="blog.fields.person"
       />
     </v-col>
   </v-row>
@@ -34,7 +24,9 @@ export default {
       const entries = await client.getEntries(env.CTF_BLOG_POST_TYPE_ID)
       // TODO: filter when fetch?
       return {
-        blogs: entries.items.filter(item => item.sys.contentType.sys.id === 'blog')
+        blogs: entries.items.filter(
+          item => item.sys.contentType.sys.id === 'blog'
+        )
       }
     } catch (err) {
       // eslint-disable-next-line no-console
