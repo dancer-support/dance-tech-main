@@ -19,6 +19,7 @@ const client = createClient()
 export default {
   components: { Card },
   transition: 'slide-left',
+  // middleware: 'auth',
   asyncData: async ({ env }) => {
     try {
       const entries = await client.getEntries(env.CTF_BLOG_POST_TYPE_ID)

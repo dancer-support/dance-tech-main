@@ -20,6 +20,24 @@
             <v-list-item-title v-text="item.title" />
           </v-list-item-content>
         </v-list-item>
+        <client-only>
+          <v-list-item v-if="loginState" @click="logout">
+            <v-list-item-action>
+              <v-icon>mdi-account</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-title>ログアウト</v-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item v-if="!loginState" to="/login">
+            <v-list-item-action>
+              <v-icon>mdi-account</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-title>ログイン</v-title>
+            </v-list-item-content>
+          </v-list-item>
+        </client-only>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar fixed app>
@@ -48,21 +66,27 @@ export default {
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Welcome',
+          title: 'トップ',
           to: '/'
         },
         {
           icon: 'mdi-chart-bubble',
           title: 'ブログ',
           to: '/blogs'
-        },
-        {
-          icon: 'mdi-account',
-          title: 'Login',
-          to: '/login'
         }
       ],
-      title: 'Vuetify.js'
+      title: 'ダンサーサポート',
+      loginState: !!this.$fire.auth.currentUser
+    }
+  },
+  methods: {
+    async logout () {
+      try {
+        await this.$fire.auth.signOut()
+        this.loginState = false
+      } catch (e) {
+        alert(e)
+      }
     }
   }
 }
