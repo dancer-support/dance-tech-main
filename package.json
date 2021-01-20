@@ -18,7 +18,7 @@
     "@nuxtjs/axios": "^5.12.5",
     "@nuxtjs/firebase": "^7.3.2",
     "@nuxtjs/pwa": "^3.3.4",
-    "core-js": "^3.8.1",
+    "core-js": "^3.8.3",
     "firebase": "^8.2.3",
     "nuxt": "^2.14.12"
   },
