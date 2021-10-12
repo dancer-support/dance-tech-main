@@ -119,15 +119,6 @@ export default {
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
 
-  generate: {
-    routes: async () => {
-      const entries = await client.getEntries(config.CTF_BLOG_POST_TYPE_ID)
-      // eslint-disable-next-line no-console
-      console.log('Entries: ', entries)
-      return entries.map(entry => `/blog/${entry.fields.title}`)
-    }
-  },
-
   env: {
     CTF_SPACE_ID: config.CTF_SPACE_ID,
     CTF_CDA_ACCESS_TOKEN: config.CTF_CDA_ACCESS_TOKEN,
