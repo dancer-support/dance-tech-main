@@ -1,6 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
 import { getConfigForKeys } from './lib/config'
-import { createClient } from './plugins/contentful'
 
 const config = getConfigForKeys([
   'CTF_BLOG_POST_TYPE_ID',
@@ -15,8 +14,6 @@ const config = getConfigForKeys([
   'VUE_APP_FIREBASE_APP_ID',
   'VUE_APP_FIREBASE_MEASUREMENT_ID'
 ])
-
-const client = createClient(config)
 
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
