@@ -21,6 +21,8 @@
 </template>
 <script>
 export default {
+  middleware: 'auth',
+  scrollToTop: true,
   data () {
     return {
       email: '',
@@ -29,8 +31,6 @@ export default {
       loading: false
     }
   },
-  middleware: 'auth',
-  scrollToTop: true,
   methods: {
     async createUser () {
       try {
