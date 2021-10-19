@@ -83,7 +83,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa',
+    // '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content'
   ],
