@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col v-for="(blog, i) in blogs" :key="i">
-      <card
+      <Card
         :title="blog.fields.title"
         :text="blog.fields.text"
         :thumbnail="blog.fields.thumbnail"
