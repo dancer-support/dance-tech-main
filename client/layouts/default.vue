@@ -73,6 +73,11 @@ export default {
           icon: 'mdi-chart-bubble',
           title: 'ブログ',
           to: '/blogs'
+        },
+        {
+          icon: 'mdi-account',
+          title: 'Performance',
+          to: '/performance'
         }
       ],
       title: 'ダンサーサポート',
