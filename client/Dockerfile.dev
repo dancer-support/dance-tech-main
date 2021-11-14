@@ -8,10 +8,6 @@ RUN apt-get update && apt-get install
 COPY package*.json ./
 RUN yarn install && yarn global add create-nuxt-app
 
-COPY shell/*.sh ./shell/
-RUN . shell/create-dotenv.sh
-RUN ls -la
-
 COPY . ./
-RUN yarn build
+RUN . shell/create-dotenv.sh && yarn build
 COPY .nuxt /.nuxt/
