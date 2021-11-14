@@ -1,11 +1,14 @@
+
 FROM node:16
 
 WORKDIR /client
 
 RUN apt-get update && apt-get install
 
-COPY package*.json ./
+COPY package*.json shell ./
 RUN yarn install && yarn global add create-nuxt-app
+
+RUN sh shell/create-dotenv.sh
 
 COPY . ./
 RUN yarn build
