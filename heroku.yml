@@ -4,6 +4,6 @@ setup:
     NPM_CONFIG_PRODUCTION: false
 build:
   docker:
-    web: client/Docker/Dockerfile
+    web: client/Dockerfile
 run:
   web: cd client && yarn start
