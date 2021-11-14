@@ -1,19 +1,4 @@
 import colors from 'vuetify/es5/util/colors'
-import { getConfigForKeys } from './lib/config'
-
-const config = getConfigForKeys([
-  'CTF_BLOG_POST_TYPE_ID',
-  'CTF_SPACE_ID',
-  'CTF_CDA_ACCESS_TOKEN',
-  'VUE_APP_FIREBASE_API_KEY',
-  'VUE_APP_FIREBASE_AUTH_DOMAIN',
-  'VUE_APP_FIREBASE_DATABASE_URL',
-  'VUE_APP_FIREBASE_PROJECT_ID',
-  'VUE_APP_FIREBASE_STORAGE_BUCKET',
-  'VUE_APP_FIREBASE_MESSAGING_SENDER_ID',
-  'VUE_APP_FIREBASE_APP_ID',
-  'VUE_APP_FIREBASE_MEASUREMENT_ID'
-])
 
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
@@ -57,14 +42,14 @@ export default {
 
   firebase: {
     config: {
-      apiKey: config.VUE_APP_FIREBASE_API_KEY,
-      authDomain: config.VUE_APP_FIREBASE_AUTH_DOMAIN,
-      databaseURL: config.VUE_APP_FIREBASE_DATABASE_URL,
-      projectId: config.VUE_APP_FIREBASE_PROJECT_ID,
-      storageBucket: config.VUE_APP_FIREBASE_STORAGE_BUCKET,
-      messagingSenderId: config.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
-      appId: config.VUE_APP_FIREBASE_APP_ID,
-      measurementId: config.VUE_APP_FIREBASE_MEASUREMENT_ID
+      apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
+      authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
+      databaseURL: process.env.VUE_APP_FIREBASE_DATABASE_URL,
+      projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
+      storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
+      appId: process.env.VUE_APP_FIREBASE_APP_ID,
+      measurementId: process.env.VUE_APP_FIREBASE_MEASUREMENT_ID
     },
     services: {
       auth: {
@@ -118,18 +103,21 @@ export default {
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
 
-  env: {
-    CTF_SPACE_ID: config.CTF_SPACE_ID,
-    CTF_CDA_ACCESS_TOKEN: config.CTF_CDA_ACCESS_TOKEN,
-    CTF_BLOG_POST_TYPE_ID: config.CTF_BLOG_POST_TYPE_ID,
-    VUE_APP_FIREBASE_API_KEY: config.VUE_APP_FIREBASE_API_KEY,
-    VUE_APP_FIREBASE_AUTH_DOMAIN: config.VUE_APP_FIREBASE_AUTH_DOMAIN,
-    VUE_APP_FIREBASE_DATABASE_URL: config.VUE_APP_FIREBASE_DATABASE_URL,
-    VUE_APP_FIREBASE_PROJECT_ID: config.VUE_APP_FIREBASE_PROJECT_ID,
-    VUE_APP_FIREBASE_STORAGE_BUCKET: config.VUE_APP_FIREBASE_STORAGE_BUCKET,
+  publicRuntimeConfig: {
+    DUMMY_APP_ID: process.env.DUMMY_APP_ID
+  },
+  privateRuntimeConfig: {
+    CTF_SPACE_ID: process.env.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
+    CTF_BLOG_POST_TYPE_ID: process.env.CTF_BLOG_POST_TYPE_ID,
+    VUE_APP_FIREBASE_API_KEY: process.env.VUE_APP_FIREBASE_API_KEY,
+    VUE_APP_FIREBASE_AUTH_DOMAIN: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
+    VUE_APP_FIREBASE_DATABASE_URL: process.env.VUE_APP_FIREBASE_DATABASE_URL,
+    VUE_APP_FIREBASE_PROJECT_ID: process.env.VUE_APP_FIREBASE_PROJECT_ID,
+    VUE_APP_FIREBASE_STORAGE_BUCKET: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
     VUE_APP_FIREBASE_MESSAGING_SENDER_ID:
-      config.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
-    VUE_APP_FIREBASE_APP_ID: config.VUE_APP_FIREBASE_APP_ID,
-    VUE_APP_FIREBASE_MEASUREMENT_ID: config.VUE_APP_FIREBASE_MEASUREMENT_ID
+      process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
+    VUE_APP_FIREBASE_APP_ID: process.env.VUE_APP_FIREBASE_APP_ID,
+    VUE_APP_FIREBASE_MEASUREMENT_ID: process.env.VUE_APP_FIREBASE_MEASUREMENT_ID
   }
 }

@@ -35,11 +35,11 @@
 <script>
 export default {
   name: 'PagePerformance',
-  async asyncData ({ $axios }) {
+  async asyncData ({ $axios, $config }) {
     const photos = await $axios.$get('https://dummyapi.io/data/v1/post', {
       params: { limit: 50 },
       headers: {
-        'app-id': process.env.DUMMY_APP_ID
+        'app-id': $config.DUMMY_APP_ID
       }
     })
     return {
