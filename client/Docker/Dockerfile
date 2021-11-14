@@ -8,7 +8,7 @@ WORKDIR /client
 
 RUN apt-get update && apt-get install
 
-COPY package*.json ./
+COPY package.json ./
 RUN yarn install && yarn global add create-nuxt-app
 
 COPY . ./
