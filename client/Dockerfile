@@ -7,5 +7,6 @@ RUN apt-get update && apt-get install
 COPY package*.json ./
 RUN yarn install && yarn global add create-nuxt-app
 
-RUN yarn build
 COPY . ./
+RUN yarn build
+COPY .nuxt /.nuxt/
