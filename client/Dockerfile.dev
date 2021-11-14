@@ -9,5 +9,5 @@ COPY package*.json ./
 RUN yarn install && yarn global add create-nuxt-app
 
 COPY . ./
-RUN . shell/create-dotenv.sh && yarn build
+RUN yarn build
 COPY .nuxt /.nuxt/
