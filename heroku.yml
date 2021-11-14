@@ -6,4 +6,4 @@ build:
   docker:
     web: client/Dockerfile
 run:
-  web: cd client && yarn start
+  web: yarn start
