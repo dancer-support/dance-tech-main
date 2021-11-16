@@ -34,33 +34,33 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
     // '@nuxtjs/dotenv'
-    '@nuxtjs/firebase'
+    // '@nuxtjs/firebase'
   ],
 
-  firebase: {
-    config: {
-      apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
-      authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
-      databaseURL: process.env.VUE_APP_FIREBASE_DATABASE_URL,
-      projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
-      storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
-      messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
-      appId: process.env.VUE_APP_FIREBASE_APP_ID,
-      measurementId: process.env.VUE_APP_FIREBASE_MEASUREMENT_ID
-    },
-    services: {
-      auth: {
-        initialize: {
-          onAuthStateChangedAction: 'onAuthStateChanged'
-        },
-        ssr: true
-        // emulatorPort: 9099,
-        // emulatorHost: 'https://localhost'
-      },
-      performance: true,
-      analytics: true
-    }
-  },
+  // firebase: {
+  //   config: {
+  //     apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
+  //     authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
+  //     databaseURL: process.env.VUE_APP_FIREBASE_DATABASE_URL,
+  //     projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
+  //     storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
+  //     messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
+  //     appId: process.env.VUE_APP_FIREBASE_APP_ID,
+  //     measurementId: process.env.VUE_APP_FIREBASE_MEASUREMENT_ID
+  //   },
+  //   services: {
+  //     auth: {
+  //       initialize: {
+  //         onAuthStateChangedAction: 'onAuthStateChanged'
+  //       },
+  //       ssr: true
+  //       // emulatorPort: 9099,
+  //       // emulatorHost: 'https://localhost'
+  //     },
+  //     performance: true,
+  //     analytics: true
+  //   }
+  // },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
@@ -69,34 +69,34 @@ export default {
     // https://go.nuxtjs.dev/pwa
     // '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
-    '@nuxt/content'
-    // [
-    //   '@nuxtjs/firebase',
-    //   {
-    //     config: {
-    //       apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
-    //       authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
-    //       databaseURL: process.env.VUE_APP_FIREBASE_DATABASE_URL,
-    //       projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
-    //       storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
-    //       messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
-    //       appId: process.env.VUE_APP_FIREBASE_APP_ID,
-    //       measurementId: process.env.VUE_APP_FIREBASE_MEASUREMENT_ID
-    //     },
-    //     services: {
-    //       auth: {
-    //         initialize: {
-    //           onAuthStateChangedAction: 'onAuthStateChanged'
-    //         },
-    //         ssr: true
-    //         // emulatorPort: 9099,
-    //         // emulatorHost: 'https://localhost'
-    //       },
-    //       performance: true,
-    //       analytics: true
-    //     }
-    //   }
-    // ]
+    '@nuxt/content',
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
+          authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
+          databaseURL: process.env.VUE_APP_FIREBASE_DATABASE_URL,
+          projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
+          storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
+          messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
+          appId: process.env.VUE_APP_FIREBASE_APP_ID,
+          measurementId: process.env.VUE_APP_FIREBASE_MEASUREMENT_ID
+        },
+        services: {
+          auth: {
+            initialize: {
+              onAuthStateChangedAction: 'onAuthStateChanged'
+            },
+            ssr: true
+            // emulatorPort: 9099,
+            // emulatorHost: 'https://localhost'
+          },
+          performance: true,
+          analytics: true
+        }
+      }
+    ]
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
