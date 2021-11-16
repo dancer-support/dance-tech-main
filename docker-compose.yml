@@ -5,6 +5,4 @@ services:
     build:
       context: client
       dockerfile: Dockerfile.local
-    ports:
-      - 3000:3000
     tty: true
