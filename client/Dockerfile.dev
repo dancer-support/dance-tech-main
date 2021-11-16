@@ -1,13 +1,19 @@
-
 FROM node:16
 
-WORKDIR /client
+RUN mkdir -p /usr/src/client
+WORKDIR /usr/src/client
 
 RUN apt-get update && apt-get install
 
-COPY package*.json ./
-RUN yarn install && yarn global add create-nuxt-app
-
-COPY . ./
+COPY . /usr/src/client/
+RUN yarn
 RUN yarn build
-COPY .nuxt /.nuxt/
+
+EXPOSE 3000
+
+ENV NUXT_HOST=0.0.0.0
+ENV NUXT_PORT=3000
+ENV NODE_ENV=production
+ENV NPM_CONFIG_PRODUCTION=false
+
+CMD [ "yarn", "start" ]
