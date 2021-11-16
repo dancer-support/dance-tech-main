@@ -5,4 +5,11 @@ services:
     build:
       context: client
       dockerfile: Dockerfile.local
+    command: yarn dev
+    ports:
+      - 3000:3000
+    environment:
+      - NUXT_HOST=0.0.0.0
+      - NUXT_PORT=3000
+      - CHOKIDAR_USEPOLLING=true
     tty: true
