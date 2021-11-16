@@ -33,34 +33,33 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
-    // '@nuxtjs/dotenv'
-    // '@nuxtjs/firebase'
+    '@nuxtjs/firebase'
   ],
 
-  // firebase: {
-  //   config: {
-  //     apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
-  //     authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
-  //     databaseURL: process.env.VUE_APP_FIREBASE_DATABASE_URL,
-  //     projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
-  //     storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
-  //     messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
-  //     appId: process.env.VUE_APP_FIREBASE_APP_ID,
-  //     measurementId: process.env.VUE_APP_FIREBASE_MEASUREMENT_ID
-  //   },
-  //   services: {
-  //     auth: {
-  //       initialize: {
-  //         onAuthStateChangedAction: 'onAuthStateChanged'
-  //       },
-  //       ssr: true
-  //       // emulatorPort: 9099,
-  //       // emulatorHost: 'https://localhost'
-  //     },
-  //     performance: true,
-  //     analytics: true
-  //   }
-  // },
+  firebase: {
+    config: {
+      apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
+      authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
+      databaseURL: process.env.VUE_APP_FIREBASE_DATABASE_URL,
+      projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
+      storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
+      appId: process.env.VUE_APP_FIREBASE_APP_ID,
+      measurementId: process.env.VUE_APP_FIREBASE_MEASUREMENT_ID
+    },
+    services: {
+      auth: {
+        initialize: {
+          onAuthStateChangedAction: 'onAuthStateChanged'
+        },
+        ssr: true
+        // emulatorPort: 9099,
+        // emulatorHost: 'https://localhost'
+      },
+      performance: true,
+      analytics: true
+    }
+  },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
@@ -69,34 +68,7 @@ export default {
     // https://go.nuxtjs.dev/pwa
     // '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
-    '@nuxt/content',
-    [
-      '@nuxtjs/firebase',
-      {
-        config: {
-          apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
-          authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
-          databaseURL: process.env.VUE_APP_FIREBASE_DATABASE_URL,
-          projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
-          storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
-          messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
-          appId: process.env.VUE_APP_FIREBASE_APP_ID,
-          measurementId: process.env.VUE_APP_FIREBASE_MEASUREMENT_ID
-        },
-        services: {
-          auth: {
-            initialize: {
-              onAuthStateChangedAction: 'onAuthStateChanged'
-            },
-            ssr: true
-            // emulatorPort: 9099,
-            // emulatorHost: 'https://localhost'
-          },
-          performance: true,
-          analytics: true
-        }
-      }
-    ]
+    '@nuxt/content'
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -131,9 +103,7 @@ export default {
     DUMMY_APP_ID: process.env.DUMMY_APP_ID,
     CTF_BLOG_POST_TYPE_ID: process.env.CTF_BLOG_POST_TYPE_ID,
     CTF_SPACE_ID: process.env.CTF_SPACE_ID,
-    CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN
-  },
-  privateRuntimeConfig: {
+    CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
     VUE_APP_FIREBASE_API_KEY: process.env.VUE_APP_FIREBASE_API_KEY,
     VUE_APP_FIREBASE_AUTH_DOMAIN: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
     VUE_APP_FIREBASE_DATABASE_URL: process.env.VUE_APP_FIREBASE_DATABASE_URL,
@@ -144,5 +114,7 @@ export default {
       process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
     VUE_APP_FIREBASE_APP_ID: process.env.VUE_APP_FIREBASE_APP_ID,
     VUE_APP_FIREBASE_MEASUREMENT_ID: process.env.VUE_APP_FIREBASE_MEASUREMENT_ID
+  },
+  privateRuntimeConfig: {
   }
 }
