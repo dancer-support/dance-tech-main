@@ -1,5 +1,5 @@
 {
-  "name": "dance-tech-main",
+  "name": "dance-tech-main-client",
   "version": "1.0.0",
   "author": "DanceEngineering",
   "private": true,
@@ -11,8 +11,7 @@
     "lint:js": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
     "lint": "yarn lint:js",
     "lint:fix": "yarn lint:js --fix",
-    "test": "jest",
-    "heroku-postbuild": "yarn generate"
+    "test": "jest"
   },
   "dependencies": {
     "@nuxt/content": "^1.15.0",
