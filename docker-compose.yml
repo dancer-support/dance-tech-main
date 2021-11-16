@@ -6,6 +6,8 @@ services:
       context: client
       dockerfile: Dockerfile.local
     command: yarn dev
+    volumes:
+      - node_modules:/usr/src/client/node_modules
     ports:
       - 3000:3000
     environment:
@@ -13,3 +15,5 @@ services:
       - NUXT_PORT=3000
       - CHOKIDAR_USEPOLLING=true
     tty: true
+volumes:
+  node_modules:
