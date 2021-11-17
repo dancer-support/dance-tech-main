@@ -5,15 +5,15 @@ services:
     build:
       context: client
       dockerfile: Dockerfile.local
+    command: yarn dev
+    volumes:
+      - node_modules:/usr/src/client/node_modules
     ports:
       - 3000:3000
-    command: yarn dev
-    working_dir: /client
-    volumes:
-      - ./client:/client
-      - node_modules:/client/node_modules
-    tty: true
     environment:
+      - NUXT_HOST=0.0.0.0
+      - NUXT_PORT=3000
       - CHOKIDAR_USEPOLLING=true
+    tty: true
 volumes:
   node_modules:

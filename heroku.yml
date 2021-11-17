@@ -1,5 +1,7 @@
 setup:
   config:
+    NUXT_HOST: 0.0.0.0
+    NUXT_PORT: 3000
     NODE_ENV: production
     NPM_CONFIG_PRODUCTION: false
 build:
