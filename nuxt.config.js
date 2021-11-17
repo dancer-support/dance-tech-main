@@ -17,6 +17,7 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/profile.png' }]
   },
+  srcDir: 'client/',
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [],
