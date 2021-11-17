@@ -3,11 +3,11 @@ version: "3.8"
 services:
   client:
     build:
-      context: client
+      context: .
       dockerfile: Dockerfile.local
     command: yarn dev
     volumes:
-      - node_modules:/usr/src/client/node_modules
+      - node_modules:/usr/src/node_modules
     ports:
       - 3000:3000
     environment:
