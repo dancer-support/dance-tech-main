@@ -3,7 +3,12 @@ FROM node:16
 RUN mkdir -p /usr/src/client
 WORKDIR /usr/src/client
 
-RUN apt-get update && apt-get install
+ENV HOST 0.0.0.0
+EXPOSE 3000
+
+RUN apt-get update && \
+    apt-get install && \
+    yarn global add create-nuxt-app
 
 COPY . /usr/src/client/
 RUN yarn
