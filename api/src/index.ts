@@ -1,10 +1,11 @@
 import './pre-start'; // Must be the first import
 import app from '@server';
 import logger from '@shared/Logger';
-require('dotenv').config();
+import dotenv from 'dotenv'
+dotenv.config();
 
 if (process.env.PORT === '3000') {
-  process.env.PORT = '4545'
+    process.env.PORT = '4545'
 }
 
 // Start the server

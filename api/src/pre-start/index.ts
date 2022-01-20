@@ -20,10 +20,13 @@ import commandLineArgs from 'command-line-args';
         },
     ]);
     // Set the env file
+  if(typeof options.env === 'string'){
     const result2 = dotenv.config({
-        path: path.join(__dirname, `env/${options.env}.env`),
+      path: path.join(__dirname, `env/${options.env}.env`),
     });
     if (result2.error) {
-        throw result2.error;
+      throw result2.error;
     }
+  }
+
 })();
