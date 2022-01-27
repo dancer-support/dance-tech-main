@@ -1,20 +1,14 @@
 # dance-tech-main
 
-## Build Setup
+## Local setup
+
+フロントは.envをclient配下に設置。
+docker-composeを使っている場合はビルドされない（`nuxt dev`）。
 
 ```bash
-# install dependencies
-$ yarn install
+# build container
+$ docker-compose build
 
-# serve with hot reload at localhost:3000
-$ yarn dev
-
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
-$ yarn generate
+# run a server
+$ docker-compose up
 ```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

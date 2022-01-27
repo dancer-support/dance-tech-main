@@ -1,0 +1,9 @@
+FROM node:16
+
+RUN mkdir -p /usr/src/client
+WORKDIR /usr/src/client
+
+RUN apt-get update && apt-get install
+
+COPY . /usr/src/client/
+RUN yarn
