@@ -41,6 +41,16 @@ services:
     volumes:
       - postgres:/var/lib/postgresql/data
 
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    container_name: "swagger-ui"
+    ports:
+      - "8002:8080"
+    volumes:
+      - ./api_document/test_api.yaml:/test_api.yaml
+    environment:
+      SWAGGER_JSON: /test_api.yaml
+
 volumes:
   client_node_modules:
   api_node_modules:
