@@ -7,7 +7,7 @@ dotenv.config();
 if (process.env.PORT === "3000") {
   process.env.PORT = "4000";
 }
-
+console.log();
 // Start the server
 const port = Number(process.env.PORT);
 app.listen(port, () => {
