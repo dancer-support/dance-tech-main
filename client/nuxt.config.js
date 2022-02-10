@@ -21,9 +21,6 @@ export default {
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [],
 
-  // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [{ src: '@/plugins/vue-masonry-css.js', ssr: false }],
-
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
 
@@ -68,7 +65,9 @@ export default {
     // https://go.nuxtjs.dev/pwa
     // '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
-    '@nuxt/content'
+    '@nuxt/content',
+    // https://image.nuxtjs.org/
+    '@nuxt/image'
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
