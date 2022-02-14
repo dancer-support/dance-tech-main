@@ -46,10 +46,10 @@ jobs:
         run: docker compose up -d
 
       - name: Install dependencies 👨🏻‍💻
-        run: docker compose ps
+        run: docker compose run --rm client yarn
 
-      # - name: Run linter 👀
-      #   run: docker compose run --rm web yarn lint
+      - name: Run linter 👀
+        run: docker compose run --rm client yarn lint
 
       # - name: Run tests 🧪
       #   run: yarn test
