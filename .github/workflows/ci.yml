@@ -43,7 +43,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - name: Docker Compose up
-        run: docker compose up -d
+        run: docker compose up -d client
 
       - name: Install dependencies 👨🏻‍💻
         run: docker compose run --rm client yarn
