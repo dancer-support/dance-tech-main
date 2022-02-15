@@ -17,7 +17,7 @@ defaults:
     working-directory: api
 
 jobs:
-  client_lint:
+  api_lint:
     runs-on: ${{ matrix.os }}
 
     strategy:
