@@ -87,7 +87,6 @@ export default {
   methods: {
     async logout () {
       try {
-        console.log('logout')
         await this.$fire.auth.signOut()
         this.loginState = false
       } catch (e) {
