@@ -1,9 +1,7 @@
-name: ci
+name: client / test
 
 on:
   push:
-    paths:
-      - client/**
     branches:
       - main
       - master
@@ -19,7 +17,7 @@ defaults:
     working-directory: client
 
 jobs:
-  ci:
+  client_lint:
     runs-on: ${{ matrix.os }}
 
     strategy:
