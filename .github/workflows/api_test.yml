@@ -1,4 +1,4 @@
-name: client / test
+name: api / test
 
 on:
   push:
@@ -13,7 +13,7 @@ on:
       - develop
 
 jobs:
-  client_lint:
+  api_lint:
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -47,7 +47,7 @@ jobs:
         run: docker compose build
 
       - name: Run linter 👀
-        run: docker compose run --rm client yarn lint
+        run: docker compose run --rm api yarn lint
 
       # - name: Run tests 🧪
       #   run: yarn test
