@@ -11,6 +11,8 @@ services:
       - client_node_modules:/usr/src/client/node_modules
     ports:
       - 3000:3000
+    env_file:
+      - .env.develop
     environment:
       - NUXT_HOST=0.0.0.0
       - NUXT_PORT=3000
@@ -26,6 +28,8 @@ services:
       - api_node_modules:/usr/src/api/node_modules
     ports:
       - 4000:4000
+    env_file:
+      - .env.develop
     environment:
       - CHOKIDAR_USEPOLLING=true
     tty: true
