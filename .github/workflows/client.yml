@@ -44,7 +44,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Set environment variables
-        run: echo "${{ secrets.DOTENV }}" > "${{ GITHUB_WORKSPACE }}/.env.develop"
+        run: echo "${{ secrets.DOTENV }}" > "${GITHUB_WORKSPACE}/.env.develop"
 
       - name: Run build
         run: docker compose build
