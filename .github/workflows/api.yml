@@ -43,7 +43,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: docker compose build
+      - name: Set environment variables
+        run: echo "${{ secrets.DOTENV }}" > "${GITHUB_WORKSPACE}/.env.develop"
+
+      - name: Run build
         run: docker compose build
 
       - name: Run linter 👀
