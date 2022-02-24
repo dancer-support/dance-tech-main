@@ -71,10 +71,23 @@ export default {
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
+  axios: {
+    baseURL: 'http://localhost:4000/api' // Used as fallback if no runtime config is provided
+  },
 
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {},
+
+  // image: {
+  //   // The screen sizes predefined by `@nuxt/image`:
+  //   screens: {
+  //     xs: 320,
+  //     sm: 640,
+  //     md: 768,
+  //     lg: 1024,
+  //     xl: 1280
+  //   }
+  // },
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
