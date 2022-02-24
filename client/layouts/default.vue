@@ -19,30 +19,10 @@ export default {
           icon: 'mdi-apps',
           title: 'トップ',
           to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'ブログ',
-          to: '/blogs'
-        },
-        {
-          icon: 'mdi-account',
-          title: 'Performance',
-          to: '/performance'
         }
       ],
       title: 'ダンサーサポート',
       loginState: !!this.$fire.auth.currentUser
-    }
-  },
-  methods: {
-    async logout () {
-      try {
-        await this.$fire.auth.signOut()
-        this.loginState = false
-      } catch (e) {
-        alert(e)
-      }
     }
   }
 }

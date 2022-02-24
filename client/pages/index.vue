@@ -1,7 +1,9 @@
 <template>
   <div>
-    <div v-for="(item, index) in items" :key="index">
-      <v-img
+    <div v-for="item in items" :key="item.id">
+      <v-card class="mx-auto" max-width="344">
+        <nuxt-img preload as="image" :src="item.image" height="163px" />
+        <!-- <v-img
         rel="preload"
         as="image"
         class="white--text align-end"
@@ -9,12 +11,12 @@
         gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
         contain
       >
-        <v-card-subtitle v-text="item.text" />
-        <v-icon class="ml-2 mb-2">
-          mdi-heart
-        </v-icon>
-        <span class="subheading ml-2 mb-2">{{ item.likes }}</span>
-      </v-img>
+      </v-img> -->
+        <div class="d-flex">
+          <div v-text="item.text" />
+          <div v-text="item.publishDate" />
+        </div>
+      </v-card>
     </div>
   </div>
 </template>
@@ -23,14 +25,18 @@
 export default {
   name: 'PagePerformance',
   async asyncData ({ $axios, $config }) {
-    const photos = await $axios.$get('https://dummyapi.io/data/v1/post', {
-      params: { limit: 50 },
-      headers: {
-        'app-id': $config.DUMMY_APP_ID
-      }
-    })
+    const [data, items] = await Promise.all([
+      $axios.$get('/performance'),
+      $axios.$get('https://dummyapi.io/data/v1/post', {
+        params: { limit: 50 },
+        headers: {
+          'app-id': $config.DUMMY_APP_ID
+        }
+      })
+    ])
     return {
-      items: photos.data
+      data,
+      items
     }
   }
 }
