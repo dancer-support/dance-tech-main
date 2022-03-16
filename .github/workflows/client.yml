@@ -1,23 +1,25 @@
-name: ci
+name: client / test
 
 on:
   push:
     branches:
       - main
       - master
+      - develop
   pull_request:
     branches:
       - main
       - master
+      - develop
 
 jobs:
-  ci:
+  client_lint:
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [14]
+        node: [16]
 
     steps:
       - name: Checkout 🛎
@@ -41,11 +43,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Install dependencies 👨🏻‍💻
-        run: yarn
+      - name: Set environment variables
+        run: echo "${{ secrets.DOTENV }}" > "${GITHUB_WORKSPACE}/.env.develop"
+
+      - name: Run build
+        run: docker compose build
 
       - name: Run linter 👀
-        run: yarn lint
+        run: docker compose run --rm client yarn lint
 
       # - name: Run tests 🧪
       #   run: yarn test
