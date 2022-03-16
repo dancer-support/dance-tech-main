@@ -6,4 +6,4 @@ WORKDIR /usr/src/api
 RUN apt-get update && apt-get install
 
 COPY . /usr/src/api/
-RUN yarn && yarn generate-doc
+RUN yarn
