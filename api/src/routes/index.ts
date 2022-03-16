@@ -1,5 +1,5 @@
 import { Router } from "express";
-import Users from "./Users";
+import Users from "./User";
 
 // Export the base-router
 const baseRouter = Router();

@@ -6,4 +6,5 @@ WORKDIR /usr/src/api
 RUN apt-get update && apt-get install
 
 COPY . /usr/src/api/
-RUN yarn
+# FIXME: yarn buildが動かないので、現状yarn buildしてからdocker-compose buildしないといけない
+RUN yarn && yarn build
