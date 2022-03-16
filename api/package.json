@@ -66,6 +66,7 @@
     "jsonfile": "^6.1.0",
     "module-alias": "^2.2.2",
     "morgan": "^1.10.0",
+    "redoc-express": "^1.0.0",
     "swagger-ui-express": "^4.3.0",
     "tsoa": "^3.14.1"
   },
