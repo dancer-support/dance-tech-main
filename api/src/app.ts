@@ -4,10 +4,9 @@ import helmet from "helmet";
 
 import express from "express";
 
-import swaggerUi from "swagger-ui-express";
-import redoc from "redoc-express";
-import swaggerDocument from "./doc/swagger.json";
 import { RegisterRoutes } from "./doc/routes";
+
+import baseRouter from "./routes";
 
 const app = express();
 
@@ -31,18 +30,6 @@ if (process.env.NODE_ENV === "production") {
 
 RegisterRoutes(app);
 
-app.use("/dev/openapi.json", function (req, res) {
-  res.setHeader("Content-Type", "application/json");
-  res.send(swaggerDocument);
-});
-app.use(
-  "/dev/schemas/swagger-ui",
-  swaggerUi.serve,
-  swaggerUi.setup(swaggerDocument)
-);
-app.use(
-  "/dev/schemas/redoc",
-  redoc({ title: "Dance Engineering", specUrl: "/dev/openapi.json" })
-);
+app.use("/", baseRouter);
 
 export default app;

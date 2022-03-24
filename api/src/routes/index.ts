@@ -1,9 +1,13 @@
 import { Router } from "express";
-import Users from "./User";
+import apiRouter from "./api";
+import schemaRouter from "./schemas";
 
-// Export the base-router
 const baseRouter = Router();
 
-baseRouter.use("/users", Users);
+baseRouter.use("/api", apiRouter);
+
+if (process.env.NODE_ENV === "development") {
+  baseRouter.use("/dev", schemaRouter);
+}
 
 export default baseRouter;
