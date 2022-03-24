@@ -1,21 +1,30 @@
-import { Controller, Get, Path, Query, Route } from "tsoa";
+import {
+  Controller,
+  Get,
+  Post,
+  Path,
+  Route,
+  Body,
+  SuccessResponse,
+} from "tsoa";
 import User from "../entities/User";
-import { UserService } from "../services/User";
+import { UserCreationParams, UserService } from "../services/User";
 
-@Route("users")
+@Route("user")
 export class UserController extends Controller {
   @Get("{userId}")
-  public getUser(@Path() userId: number, @Query() name?: string): User {
-    return new UserService().get(userId, name);
+  public async getUser(@Path() userId: number): Promise<User | null> {
+    const user = await new UserService().get(userId);
+    return user;
   }
 
-  // @SuccessResponse("201", "Created") // Custom success response
-  // @Post()
-  // public async createUser(
-  //   @Body() requestBody: UserCreationParams
-  // ): Promise<void> {
-  //   this.setStatus(201); // set return status 201
-  //   new UserService().create(requestBody);
-  //   return;
-  // }
+  @SuccessResponse("201", "Created")
+  @Post()
+  public async createUser(
+    @Body() requestBody: UserCreationParams
+  ): Promise<User> {
+    this.setStatus(201);
+    const user = await new UserService().create(requestBody);
+    return user;
+  }
 }

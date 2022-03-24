@@ -68,9 +68,12 @@
     "jsonfile": "^6.1.0",
     "module-alias": "^2.2.2",
     "morgan": "^1.10.0",
+    "pg": "^8.7.3",
     "redoc-express": "^1.0.0",
+    "reflect-metadata": "^0.1.13",
     "swagger-ui-express": "^4.3.0",
-    "tsoa": "^3.14.1"
+    "tsoa": "^3.14.1",
+    "typeorm": "^0.3.3"
   },
   "devDependencies": {
     "@types/command-line-args": "^5.2.0",
