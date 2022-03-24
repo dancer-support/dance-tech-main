@@ -1,15 +1,6 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Path,
-  Post,
-  Query,
-  Route,
-  SuccessResponse,
-} from "tsoa";
+import { Controller, Get, Path, Query, Route } from "tsoa";
 import User from "../entities/User";
-import { UserService, UserCreationParams } from "../services/User";
+import { UserService } from "../services/User";
 
 @Route("users")
 export class UserController extends Controller {
