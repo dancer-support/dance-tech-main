@@ -5,7 +5,9 @@ const performanceRepository = AppDataSource.getRepository(Performance);
 
 export class PerformancesService {
   public async get(): Promise<Performance[] | null> {
-    const performances = await performanceRepository.find();
+    const performances = await performanceRepository.find({
+      relations: ["dancers"],
+    });
     return performances;
   }
 }

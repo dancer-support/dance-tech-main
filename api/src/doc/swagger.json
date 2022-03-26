@@ -6,6 +6,72 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
+			"Dancer": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"first_name_en": {
+						"type": "string"
+					},
+					"last_name_en": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"image_url": {
+						"type": "string"
+					},
+					"created_at": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updated_at": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"id",
+					"first_name_en",
+					"last_name_en",
+					"created_at",
+					"updated_at",
+					"description",
+					"image_url"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Pick_Dancer.first_name_en-or-last_name_en-or-description-or-image_url_": {
+				"properties": {
+					"first_name_en": {
+						"type": "string"
+					},
+					"last_name_en": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"image_url": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"first_name_en",
+					"last_name_en",
+					"description",
+					"image_url"
+				],
+				"type": "object",
+				"description": "From T, pick a set of properties whose keys are in the union K"
+			},
+			"DancerCreationParams": {
+				"$ref": "#/components/schemas/Pick_Dancer.first_name_en-or-last_name_en-or-description-or-image_url_"
+			},
 			"Performance": {
 				"properties": {
 					"id": {
@@ -14,29 +80,87 @@
 					},
 					"title": {
 						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"image_url": {
+						"type": "string"
+					},
+					"start_at": {
+						"type": "string"
+					},
+					"dancers": {
+						"items": {
+							"$ref": "#/components/schemas/Dancer"
+						},
+						"type": "array",
+						"nullable": true
+					},
+					"created_at": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updated_at": {
+						"type": "string",
+						"format": "date-time"
 					}
 				},
 				"required": [
 					"id",
-					"title"
+					"title",
+					"dancers",
+					"created_at",
+					"updated_at",
+					"description",
+					"image_url",
+					"start_at"
 				],
 				"type": "object",
 				"additionalProperties": false
 			},
-			"Pick_Performance.title_": {
+			"Pick_Performance.title-or-description-or-image_url-or-start_at_": {
 				"properties": {
+					"description": {
+						"type": "string"
+					},
+					"image_url": {
+						"type": "string"
+					},
 					"title": {
+						"type": "string"
+					},
+					"start_at": {
 						"type": "string"
 					}
 				},
 				"required": [
-					"title"
+					"description",
+					"image_url",
+					"title",
+					"start_at"
 				],
 				"type": "object",
 				"description": "From T, pick a set of properties whose keys are in the union K"
 			},
 			"PerformanceCreationParams": {
-				"$ref": "#/components/schemas/Pick_Performance.title_"
+				"allOf": [
+					{
+						"$ref": "#/components/schemas/Pick_Performance.title-or-description-or-image_url-or-start_at_"
+					},
+					{
+						"properties": {
+							"dancer_ids": {
+								"items": {
+									"type": "number",
+									"format": "double"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				]
 			}
 		},
 		"securitySchemes": {}
@@ -48,6 +172,69 @@
 	},
 	"openapi": "3.0.0",
 	"paths": {
+		"/dancer/{id}": {
+			"get": {
+				"operationId": "GetDancer",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/Dancer"
+										}
+									],
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/dancer": {
+			"post": {
+				"operationId": "CreateDancer",
+				"responses": {
+					"201": {
+						"description": "Created",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Dancer"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/DancerCreationParams"
+							}
+						}
+					}
+				}
+			}
+		},
 		"/performance/{id}": {
 			"get": {
 				"operationId": "GetPerformance",
