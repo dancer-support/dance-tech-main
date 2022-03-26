@@ -25,10 +25,10 @@
 
 <script>
 export default {
-  name: 'PagePerformance',
+  name: 'PagePerformances',
   async asyncData ({ $axios, $config }) {
     const [data, items] = await Promise.all([
-      $axios.$get('/performance'),
+      $axios.$get('/performances'),
       $axios.$get('https://dummyapi.io/data/v1/post', {
         params: { limit: 50 },
         headers: {
