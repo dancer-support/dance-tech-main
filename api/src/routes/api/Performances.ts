@@ -8,9 +8,11 @@ const { OK } = StatusCodes;
 
 const router = Router();
 
-router.get("/", async (req, res) => {
-  const performances = await performancesService.get();
-  res.status(OK).json({ performances });
+router.get("/", (req, res) => {
+  (async () => {
+    const performances = await performancesService.get();
+    res.status(OK).json({ performances });
+  })();
 });
 
 export default router;
