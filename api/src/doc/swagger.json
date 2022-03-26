@@ -172,40 +172,6 @@
 	},
 	"openapi": "3.0.0",
 	"paths": {
-		"/dancer/{id}": {
-			"get": {
-				"operationId": "GetDancer",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/components/schemas/Dancer"
-										}
-									],
-									"nullable": true
-								}
-							}
-						}
-					}
-				},
-				"security": [],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "id",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
-			}
-		},
 		"/dancer": {
 			"post": {
 				"operationId": "CreateDancer",
@@ -235,9 +201,32 @@
 				}
 			}
 		},
-		"/performance/{id}": {
+		"/dancers": {
 			"get": {
-				"operationId": "GetPerformance",
+				"operationId": "GetDancers",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Dancer"
+									},
+									"type": "array",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/dancers/{id}": {
+			"get": {
+				"operationId": "GetDancer",
 				"responses": {
 					"200": {
 						"description": "Ok",
@@ -246,7 +235,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Performance"
+											"$ref": "#/components/schemas/Dancer"
 										}
 									],
 									"nullable": true
@@ -319,6 +308,40 @@
 				},
 				"security": [],
 				"parameters": []
+			}
+		},
+		"/performances/{id}": {
+			"get": {
+				"operationId": "GetPerformance",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/Performance"
+										}
+									],
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
 			}
 		}
 	},
