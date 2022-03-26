@@ -6,45 +6,37 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
-			"User": {
+			"Performance": {
 				"properties": {
 					"id": {
 						"type": "number",
 						"format": "double"
 					},
-					"name": {
-						"type": "string"
-					},
-					"email": {
+					"title": {
 						"type": "string"
 					}
 				},
 				"required": [
 					"id",
-					"name",
-					"email"
+					"title"
 				],
 				"type": "object",
 				"additionalProperties": false
 			},
-			"Pick_User.email-or-name_": {
+			"Pick_Performance.title_": {
 				"properties": {
-					"email": {
-						"type": "string"
-					},
-					"name": {
+					"title": {
 						"type": "string"
 					}
 				},
 				"required": [
-					"email",
-					"name"
+					"title"
 				],
 				"type": "object",
 				"description": "From T, pick a set of properties whose keys are in the union K"
 			},
-			"UserCreationParams": {
-				"$ref": "#/components/schemas/Pick_User.email-or-name_"
+			"PerformanceCreationParams": {
+				"$ref": "#/components/schemas/Pick_Performance.title_"
 			}
 		},
 		"securitySchemes": {}
@@ -56,9 +48,9 @@
 	},
 	"openapi": "3.0.0",
 	"paths": {
-		"/user/{userId}": {
+		"/performance/{id}": {
 			"get": {
-				"operationId": "GetUser",
+				"operationId": "GetPerformance",
 				"responses": {
 					"200": {
 						"description": "Ok",
@@ -67,7 +59,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/User"
+											"$ref": "#/components/schemas/Performance"
 										}
 									],
 									"nullable": true
@@ -80,7 +72,7 @@
 				"parameters": [
 					{
 						"in": "path",
-						"name": "userId",
+						"name": "id",
 						"required": true,
 						"schema": {
 							"format": "double",
@@ -90,16 +82,16 @@
 				]
 			}
 		},
-		"/user": {
+		"/performance": {
 			"post": {
-				"operationId": "CreateUser",
+				"operationId": "CreatePerformance",
 				"responses": {
 					"201": {
 						"description": "Created",
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/User"
+									"$ref": "#/components/schemas/Performance"
 								}
 							}
 						}
@@ -112,7 +104,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/UserCreationParams"
+								"$ref": "#/components/schemas/PerformanceCreationParams"
 							}
 						}
 					}
