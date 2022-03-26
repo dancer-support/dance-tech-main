@@ -26,6 +26,25 @@
 				],
 				"type": "object",
 				"additionalProperties": false
+			},
+			"Pick_User.email-or-name_": {
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"email",
+					"name"
+				],
+				"type": "object",
+				"description": "From T, pick a set of properties whose keys are in the union K"
+			},
+			"UserCreationParams": {
+				"$ref": "#/components/schemas/Pick_User.email-or-name_"
 			}
 		},
 		"securitySchemes": {}
@@ -37,7 +56,7 @@
 	},
 	"openapi": "3.0.0",
 	"paths": {
-		"/users/{userId}": {
+		"/user/{userId}": {
 			"get": {
 				"operationId": "GetUser",
 				"responses": {
@@ -46,7 +65,12 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/User"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/User"
+										}
+									],
+									"nullable": true
 								}
 							}
 						}
@@ -62,16 +86,37 @@
 							"format": "double",
 							"type": "number"
 						}
-					},
-					{
-						"in": "query",
-						"name": "name",
-						"required": false,
-						"schema": {
-							"type": "string"
-						}
 					}
 				]
+			}
+		},
+		"/user": {
+			"post": {
+				"operationId": "CreateUser",
+				"responses": {
+					"201": {
+						"description": "Created",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/User"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UserCreationParams"
+							}
+						}
+					}
+				}
 			}
 		}
 	},

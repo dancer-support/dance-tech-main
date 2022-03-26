@@ -4,13 +4,19 @@ import { Router } from "express";
 import { UserService } from "../../services/User";
 
 const userService = new UserService();
-const { OK } = StatusCodes;
+const { OK, CREATED } = StatusCodes;
 
 const router = Router();
 
-router.get("/", (_req, res) => {
-  const user = userService.get(1);
+router.get("/", async (_req, res) => {
+  const user = await userService.get(1);
   res.status(OK).json({ user });
+});
+
+router.post("/", async (req, res) => {
+  const requestBody = req.body;
+  const user = await userService.create(requestBody);
+  res.status(CREATED).json({ user });
 });
 
 export default router;

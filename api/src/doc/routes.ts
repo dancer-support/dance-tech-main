@@ -19,6 +19,16 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Pick_User.email-or-name_": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"email":{"dataType":"string","required":true},"name":{"dataType":"string","required":true}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "UserCreationParams": {
+        "dataType": "refAlias",
+        "type": {"ref":"Pick_User.email-or-name_","validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 };
 const validationService = new ValidationService(models);
 
@@ -29,12 +39,11 @@ export function RegisterRoutes(app: express.Router) {
     //  NOTE: If you do not see routes for all of your controllers in this file, then you might not have informed tsoa of where to look
     //      Please look into the "controllerPathGlobs" config option described in the readme: https://github.com/lukeautry/tsoa
     // ###########################################################################################################
-        app.get('/users/:userId',
+        app.get('/user/:userId',
 
             function UserController_getUser(request: any, response: any, next: any) {
             const args = {
                     userId: {"in":"path","name":"userId","required":true,"dataType":"double"},
-                    name: {"in":"query","name":"name","dataType":"string"},
             };
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
@@ -47,6 +56,29 @@ export function RegisterRoutes(app: express.Router) {
 
 
               const promise = controller.getUser.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.post('/user',
+
+            function UserController_createUser(request: any, response: any, next: any) {
+            const args = {
+                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"UserCreationParams"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new UserController();
+
+
+              const promise = controller.createUser.apply(controller, validatedArgs as any);
               promiseHandler(controller, promise, response, undefined, next);
             } catch (err) {
                 return next(err);
