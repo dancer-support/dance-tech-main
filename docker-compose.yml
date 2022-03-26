@@ -23,7 +23,7 @@ services:
     build:
       context: api
       dockerfile: Dockerfile.local
-    command: yarn start:dev
+    command: sh -c 'yarn generate-doc && yarn watch'
     volumes:
       - ./api:/usr/src/api
       - api_node_modules:/usr/src/api/node_modules

@@ -2,15 +2,13 @@ import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import helmet from "helmet";
 
-import express, { Request, Response } from "express";
-import StatusCodes from "http-status-codes";
-import "express-async-errors";
+import express from "express";
 
-import BaseRouter from "./routes";
-import logger from "@shared/Logger";
+import { RegisterRoutes } from "./doc/routes";
+
+import baseRouter from "./routes";
 
 const app = express();
-const { BAD_REQUEST } = StatusCodes;
 
 /************************************************************************************
  *                              Set basic express settings
@@ -30,15 +28,8 @@ if (process.env.NODE_ENV === "production") {
   app.use(helmet());
 }
 
-// Add APIs
-app.use("/api", BaseRouter);
+RegisterRoutes(app);
 
-// Print API errors
-app.use((err: Error, _req: Request, res: Response) => {
-  logger.err(err, true);
-  return res.status(BAD_REQUEST).json({
-    error: err.message,
-  });
-});
+app.use("/", baseRouter);
 
 export default app;
