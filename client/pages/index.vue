@@ -2,22 +2,24 @@
   <div>
     <div v-for="item in items" :key="item.id">
       <v-card class="mx-auto" max-width="344">
-        <nuxt-img preload as="image" :src="item.image" height="163px" />
-        <!-- <v-img
-        rel="preload"
-        as="image"
-        class="white--text align-end"
-        :src="item.image"
-        gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-        contain
-      >
-      </v-img> -->
-        <div class="d-flex">
-          <div v-text="item.text" />
-          <div v-text="item.publishDate" />
-        </div>
+        <v-img
+          rel="preload"
+          as="image"
+          class="white--text align-end"
+          :src="item.image"
+          gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+          contain
+        >
+          <div class="d-flex">
+            <div v-text="item.text" />
+            <div v-text="item.publishDate" />
+          </div>
+        </v-img>
       </v-card>
     </div>
+    <v-card>
+      <div v-html="data" />
+    </v-card>
   </div>
 </template>
 
