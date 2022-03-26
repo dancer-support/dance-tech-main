@@ -6,19 +6,23 @@ import { DancerService } from "../../services/Dancer";
 
 const dancersService = new DancersService();
 const dancerService = new DancerService();
-const { OK, CREATED } = StatusCodes;
+const { OK } = StatusCodes;
 
 const router = Router();
 
-router.get("/", async (_req, res) => {
-  const dancers = await dancersService.get();
-  res.status(OK).json({ performances: dancers });
+router.get("/", (_req, res) => {
+  (async () => {
+    const dancers = await dancersService.get();
+    res.status(OK).json({ performances: dancers });
+  })();
 });
 
-router.get("/:id", async (req, res) => {
-  const id = Number(req.params.id);
-  const dancer = await dancerService.get(id);
-  res.status(OK).json({ dancer });
+router.get("/:id", (req, res) => {
+  (async () => {
+    const id = Number(req.params.id);
+    const dancer = await dancerService.get(id);
+    res.status(OK).json({ dancer });
+  })();
 });
 
 export default router;

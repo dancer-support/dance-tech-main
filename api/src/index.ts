@@ -15,6 +15,7 @@ AppDataSource.initialize()
   .then(() => {
     // here you can start to work with your database
   })
+  /* eslint no-console: 0 */
   .catch((error: Error) => console.log(error));
 
 // Start the server

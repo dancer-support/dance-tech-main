@@ -10,15 +10,19 @@ const { OK } = StatusCodes;
 
 const router = Router();
 
-router.get("/", async (_req, res) => {
-  const performances = await performancesService.get();
-  res.status(OK).json({ performances });
+router.get("/", (_req, res) => {
+  (async () => {
+    const performances = await performancesService.get();
+    res.status(OK).json({ performances });
+  })();
 });
 
-router.get("/:id", async (req, res) => {
-  const id = Number(req.params.id);
-  const performance = await performanceService.get(id);
-  res.status(OK).json({ performance });
+router.get("/:id", (req, res) => {
+  (async () => {
+    const id = Number(req.params.id);
+    const performance = await performanceService.get(id);
+    res.status(OK).json({ performance });
+  })();
 });
 
 export default router;
