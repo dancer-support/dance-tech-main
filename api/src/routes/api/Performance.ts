@@ -7,17 +7,9 @@ import {
 } from "../../services/Performance";
 
 const performanceService = new PerformanceService();
-const { OK, CREATED } = StatusCodes;
+const { CREATED } = StatusCodes;
 
 const router = Router();
-
-router.get("/:id", (req, res) => {
-  (async () => {
-    const id = Number(req.params.id);
-    const performance = await performanceService.get(id);
-    res.status(OK).json({ performance });
-  })();
-});
 
 router.post("/", (req, res) => {
   (async () => {

@@ -1,46 +1,46 @@
 import {
+  AfterLoad,
   Column,
   CreateDateColumn,
   Entity,
-  JoinTable,
-  ManyToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
-import Dancer from "./Dancer";
 
-export interface IPerformance {
+export interface IDancer {
   id: number;
-  title: string;
+  first_name_en: string;
+  last_name_en: string;
   description?: string;
   image_url?: string;
-  start_at?: string;
-  dancers: Dancer[] | null;
   created_at: Date;
   updated_at: Date;
 }
 
 @Entity()
-class Performance implements IPerformance {
+class Dancer implements IDancer {
   @PrimaryGeneratedColumn()
   public id!: number;
   @Column()
-  public title!: string;
+  public first_name_en!: string;
+  @Column()
+  public last_name_en!: string;
   @Column()
   public description!: string;
   @Column()
   public image_url!: string;
-  @Column()
-  public start_at!: string;
-
-  @ManyToMany(() => Dancer)
-  @JoinTable()
-  public dancers!: Dancer[] | null;
 
   @CreateDateColumn({ name: "created_at", type: "timestamp", precision: 0 })
   readonly created_at!: Date;
   @UpdateDateColumn({ name: "updated_at", type: "timestamp", precision: 0 })
   readonly updated_at!: Date;
+
+  protected name!: string;
+
+  @AfterLoad()
+  getName() {
+    this.name = this.first_name_en + " " + this.last_name_en;
+  }
 }
 
-export default Performance;
+export default Dancer;
