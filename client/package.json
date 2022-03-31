@@ -21,8 +21,7 @@
     "core-js": "^3.10.0",
     "firebase": "^8.3.2",
     "next": "^11.1.2",
-    "nuxt": "^2.15.3",
-    "vue-masonry-css": "^1.0.3"
+    "nuxt": "^2.15.3"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.4",

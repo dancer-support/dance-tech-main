@@ -21,9 +21,6 @@ export default {
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [],
 
-  // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [{ src: '@/plugins/vue-masonry-css.js', ssr: false }],
-
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
 
@@ -72,7 +69,10 @@ export default {
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
+  axios: {
+    baseURL: 'http://api:4000/api', // Used as fallback if no runtime config is provided
+    browserBaseURL: 'http://localhost:4000/api'
+  },
 
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {},
