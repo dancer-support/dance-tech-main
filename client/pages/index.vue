@@ -1,20 +1,9 @@
 <template>
   <div>
-    <div v-for="item in items" :key="item.id">
-      <v-card class="mx-auto" max-width="344">
-        <v-img
-          rel="preload"
-          as="image"
-          class="white--text align-end"
-          :src="item.image"
-          gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-          contain
-        >
-          <div class="d-flex">
-            <div v-text="item.text" />
-            <div v-text="item.publishDate" />
-          </div>
-        </v-img>
+    <div v-for="item in items.data" :key="item.id">
+      <v-card class="mx-auto" max-width="343">
+        <WideImage :src="item.image" />
+        <Location :location-name="item.tags[0]" />
       </v-card>
     </div>
     <v-card>
@@ -24,8 +13,14 @@
 </template>
 
 <script>
+const Location = () => import('@/components/atom/icon/location')
+const WideImage = () => import('@/components/atom/image/wideImage')
 export default {
   name: 'PagePerformances',
+  components: {
+    WideImage,
+    Location
+  },
   async asyncData ({ $axios, $config }) {
     const [data, items] = await Promise.all([
       $axios.$get('/performances'),
