@@ -9,7 +9,7 @@ export default {
   name: 'PerformanceDate',
   props: {
     startAt: {
-      type: Date,
+      type: String,
       required: true
     }
   },
