@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex d-inline-flex">
+  <div class="d-flex d-inline-flex location-header">
     <v-icon class="location-icon" aria-label="location" role="img" aria-hidden="false" size="12">
       {{ location }}
     </v-icon>
@@ -16,7 +16,7 @@ export default {
   props: {
     locationName: {
       type: String,
-      default: '東京'
+      required: true
     }
   },
   data () {
@@ -28,6 +28,9 @@ export default {
 </script>
 
 <style scoped>
+.location-header {
+  width: 50%;
+}
 .location-icon {
   margin: 0.5rem;
 }
