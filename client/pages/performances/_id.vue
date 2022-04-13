@@ -34,15 +34,12 @@ export default ({
   async asyncData ({ params, $axios }) {
     const id = params.id
     const { performance } = await $axios.$get(`/performances/${id}`)
-    const names = performance.dancers.map((dancer) => {
-      const { first_name_en: firstName, last_name_en: lastName } = dancer
-      return `${firstName} ${lastName}`
-    })
     const imageUrls = performance.dancers.map(dancer => dancer.image_url)
+    const names = performance.dancers.map(dancer => dancer.name)
     return {
       performance,
-      names,
-      imageUrls
+      imageUrls,
+      names
     }
   }
 })
