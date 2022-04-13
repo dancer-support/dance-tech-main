@@ -5,9 +5,7 @@
     </NuxtLink>
     <h1>{{ performance.title }}</h1>
     <section>
-      <!-- FIXME: WideImageから外部の画像を表示できていない模様なので、一時的にアイコンを表示している -->
-      <!-- <AtomImageWideImage :src="performance.image_url" /> -->
-      <AtomImageWideImage :src="link" />
+      <AtomImageWideImage :src="performance.image_url" />
       <p>{{ performance.description }}</p>
     </section>
     <section>
@@ -21,7 +19,7 @@
             no-gutters
           >
             <v-card v-if="i <= performance.dancers.length" class="pa-2">
-              <AtomImageWideImage :src="link" />
+              <AtomImageWideImage :src="imageUrls[i - 1]" />
               <p>{{ names[i - 1] }}</p>
             </v-card>
           </v-col>
@@ -41,10 +39,12 @@ export default ({
       const { first_name_en: firstName, last_name_en: lastName } = dancer
       return `${firstName} ${lastName}`
     })
+    const imageUrls = performance.dancers.map(dancer => dancer.image_url)
     return {
       performance,
       link,
-      names
+      names,
+      imageUrls
     }
   }
 })
