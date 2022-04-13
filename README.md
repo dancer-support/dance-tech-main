@@ -6,9 +6,6 @@
 docker-composeを使っている場合はビルドされない（`nuxt dev`）。
 
 ```bash
-# build container
-$ docker-compose build
-
-# run a server
-$ docker-compose up
+# build container and run a server
+$ make init
 ```
