@@ -1,17 +1,14 @@
 <template>
   <div>
-    <div v-for="item in items.data" :key="item.id">
+    <div v-for="performance in performances.data" :key="performance.id">
       <v-card class="mx-auto" max-width="343">
-        <WideImage :src="item.image" />
+        <WideImage :src="performance.image" />
         <div class="d-flex">
           <Location :location-name="location" />
           <PerformanceDate :start-at="startAt" />
         </div>
       </v-card>
     </div>
-    <v-card>
-      <div v-html="data" />
-    </v-card>
   </div>
 </template>
 
@@ -25,21 +22,14 @@ export default {
     Location,
     PerformanceDate
   },
-  async asyncData ({ $axios, $config }) {
+  async asyncData ({ $axios　}) {
     const startAt = '2022-04-07T11:52:37.344Z'
     const location = '東京'
-    const [data, items] = await Promise.all([
+    const [performances] = await Promise.all([
       $axios.$get('/performances'),
-      $axios.$get('https://dummyapi.io/data/v1/post', {
-        params: { limit: 10 },
-        headers: {
-          'app-id': $config.DUMMY_APP_ID
-        }
-      })
     ])
     return {
-      data,
-      items,
+      performances,
       startAt,
       location
     }

@@ -27,5 +27,6 @@ export default {
   width: 50%;
   text-align: right;
   margin: 0.5rem;
+  color: #3e3e3e;
 }
 </style>
