@@ -9,7 +9,7 @@
           <p>{{ performance.title }}</p>
           <div class="d-flex">
             <Location :location-name="location" />
-            <PerformanceDate :start-at="startAt" />
+            <PerformanceDate :start-at="performance.start_at" />
           </div>
         </NuxtLink>
       </v-card>
@@ -31,14 +31,12 @@ export default {
   name: 'PagePerformances',
   components,
   async asyncData ({ $axios }) {
-    const startAt = '2022-04-07T11:52:37.344Z'
     const location = '東京'
     const { performances } = await $axios.$get('/performances')
     const links = performances.map(performance => `/performances/${performance.id}`)
     return {
       performances,
       links,
-      startAt,
       location
     }
   }
