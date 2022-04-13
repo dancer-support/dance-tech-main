@@ -22,7 +22,7 @@ export default {
     Location,
     PerformanceDate
   },
-  async asyncData ({ $axios　}) {
+  async asyncData ({ $axios }) {
     const startAt = '2022-04-07T11:52:37.344Z'
     const location = '東京'
     const [performances] = await Promise.all([
