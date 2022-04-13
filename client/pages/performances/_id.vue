@@ -34,7 +34,6 @@ export default ({
   async asyncData ({ params, $axios }) {
     const id = params.id
     const { performance } = await $axios.$get(`/performances/${id}`)
-    const link = '/profile.png'
     const names = performance.dancers.map((dancer) => {
       const { first_name_en: firstName, last_name_en: lastName } = dancer
       return `${firstName} ${lastName}`
@@ -42,7 +41,6 @@ export default ({
     const imageUrls = performance.dancers.map(dancer => dancer.image_url)
     return {
       performance,
-      link,
       names,
       imageUrls
     }
