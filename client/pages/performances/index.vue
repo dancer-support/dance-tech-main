@@ -6,13 +6,10 @@
     >
       <v-card class="mx-auto performance-card" width="100%">
         <NuxtLink :to="`/performances/${performance.id}`">
-          <div class="d-block">
-            <PerformanceDate :start-at="performance.start_at" />
-          </div>
-          <div class="d-block performance-description">
-            <p class="performance-title">{{ performance.title }}</p>
-            <p>{{ performanceTime }}</p>
+          <p>{{ performance.title }}</p>
+          <div class="d-flex">
             <Location :location-name="location" />
+            <PerformanceDate :start-at="performance.start_at" />
           </div>
         </NuxtLink>
       </v-card>
@@ -23,7 +20,7 @@
 <script>
 const Location = () => import('@/components/atom/icon/location')
 const PerformanceDate = () =>
-  import('@/components/atom/performance/performanceDate')
+  import('@/components/atom/performance/phase1/performanceDate')
 
 const components = {
   Location,
@@ -35,9 +32,6 @@ export default {
   components,
   async asyncData ({ $axios }) {
     const location = '東京'
-    const now = new Date()
-    const time = `${now.getHours()}:${now.getMinutes()}`
-    const performanceTime = `${time}-${time}`
     const theater = {
       id: '1',
       name: '新国立劇場'
@@ -46,7 +40,6 @@ export default {
     const { performances } = await $axios.$get('/performances')
     return {
       performances,
-      performanceTime,
       location,
       theater
     }
@@ -60,14 +53,5 @@ export default {
 }
 .performance-card > a {
   text-decoration: none;
-}
-.performance-card > a:hover {
-  text-decoration: none;
-}
-.performance-description > p {
-  display: flex;
-  font-size: 16px;
-  color: #3e3e3e;
-  margin-bottom: 4px;
 }
 </style>
