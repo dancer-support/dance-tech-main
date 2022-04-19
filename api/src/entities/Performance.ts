@@ -18,7 +18,7 @@ export interface IPerformance {
   image_url?: string;
   start_at?: Date;
   end_at?: Date;
-  theater: Theater;
+  theater: Theater | null;
   dancers: Dancer[] | null;
   created_at: Date;
   updated_at: Date;
@@ -40,7 +40,7 @@ class Performance implements IPerformance {
   public end_at!: Date;
 
   @ManyToOne(() => Theater, (theater: Theater) => theater.performances)
-  public theater!: Theater;
+  public theater!: Theater | null;
 
   @ManyToMany(() => Dancer)
   @JoinTable()
