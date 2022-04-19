@@ -1,11 +1,11 @@
 <template>
   <v-container>
     <v-row
-      v-for="performance in performances"
+      v-for="performance, i in performances"
       :key="performance.id"
     >
-      <v-card class="mx-auto performance-card" width="100%">
-        <NuxtLink :to="`/performances/${performance.id}`">
+      <v-card class="mx-auto" width="100%">
+        <NuxtLink :to="links[i]">
           <p>{{ performance.title }}</p>
           <div class="d-flex">
             <Location :location-name="location" />
@@ -20,7 +20,7 @@
 <script>
 const Location = () => import('@/components/atom/icon/location')
 const PerformanceDate = () =>
-  import('@/components/atom/performance/phase1/performanceDate')
+  import('@/components/atom/performance/phase0/performanceDate')
 
 const components = {
   Location,
@@ -32,26 +32,13 @@ export default {
   components,
   async asyncData ({ $axios }) {
     const location = '東京'
-    const theater = {
-      id: '1',
-      name: '新国立劇場'
-    }
-
     const { performances } = await $axios.$get('/performances')
+    const links = performances.map(performance => `/performances/${performance.id}`)
     return {
       performances,
-      location,
-      theater
+      links,
+      location
     }
   }
 }
 </script>
-
-<style scoped>
-.performance-card {
-  margin-bottom: 14px;
-}
-.performance-card > a {
-  text-decoration: none;
-}
-</style>
