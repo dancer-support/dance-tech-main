@@ -307,9 +307,9 @@ COPY public.dancer (id, first_name_en, last_name_en, description, image_url, cre
 --
 
 COPY public.performance (id, title, description, image_url, start_at, end_at, created_at, updated_at, "theaterId") FROM stdin;
-4	くるみ割り人形	クリスマスの風物詩	https://media.istockphoto.com/photos/picturesque-morning-in-plitvice-national-park-colorful-spring-scene-picture-id1093110112	2022-04-19 12:31:46.512	2022-04-19 12:31:46.512	2022-04-19 12:33:00	2022-04-19 12:33:00	\N
 6	眠れる森の美女	誰が姫を起こすのか	https://images.pexels.com/photos/302743/pexels-photo-302743.jpeg	2022-04-23 09:00:00.512	2022-04-19 12:00:00.512	2022-04-19 12:35:34	2022-04-19 12:35:34	\N
 5	白鳥の湖	白鳥の舞いを見よ	https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__340.jpg	2022-04-19 12:31:46.512	2022-04-19 12:31:46.512	2022-04-19 12:34:25	2022-04-19 12:34:25	\N
+7	くるみ割り人形	クリスマスの風物詩	https://media.istockphoto.com/photos/picturesque-morning-in-plitvice-national-park-colorful-spring-scene-picture-id1093110112	2022-04-26 19:00:00.413	2022-04-26 22:00:00.413	2022-04-19 14:47:57	2022-04-19 14:47:57	1
 \.
 
 
@@ -318,12 +318,13 @@ COPY public.performance (id, title, description, image_url, start_at, end_at, cr
 --
 
 COPY public.performance_dancers_dancer ("performanceId", "dancerId") FROM stdin;
-4	1
 5	1
 5	2
 5	3
 6	2
 6	3
+7	2
+7	3
 \.
 
 
@@ -332,6 +333,7 @@ COPY public.performance_dancers_dancer ("performanceId", "dancerId") FROM stdin;
 --
 
 COPY public.theater (id, name, location) FROM stdin;
+1	東京文化会館	東京都台東区上野公園5-45
 \.
 
 
@@ -354,7 +356,7 @@ SELECT pg_catalog.setval('public.dancer_id_seq', 3, true);
 -- Name: performance_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('public.performance_id_seq', 6, true);
+SELECT pg_catalog.setval('public.performance_id_seq', 7, true);
 
 
 --
