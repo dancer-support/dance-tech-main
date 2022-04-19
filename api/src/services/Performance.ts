@@ -15,7 +15,10 @@ const dancerRepository = AppDataSource.getRepository(Dancer);
 
 export class PerformanceService {
   public async get(id: number): Promise<Performance | null> {
-    const performance = await performanceRepository.findOneBy({ id });
+    const performance = await performanceRepository.findOne({
+      where: { id },
+      relations: ["dancers"],
+    });
     return performance;
   }
 
