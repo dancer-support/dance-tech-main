@@ -157,7 +157,7 @@
 				"type": "object",
 				"additionalProperties": false
 			},
-			"Pick_Performance.title-or-description-or-image_url-or-start_at_": {
+			"Pick_Performance.title-or-description-or-image_url-or-start_at-or-end_at_": {
 				"properties": {
 					"description": {
 						"type": "string"
@@ -171,13 +171,18 @@
 					"start_at": {
 						"type": "string",
 						"format": "date-time"
+					},
+					"end_at": {
+						"type": "string",
+						"format": "date-time"
 					}
 				},
 				"required": [
 					"description",
 					"image_url",
 					"title",
-					"start_at"
+					"start_at",
+					"end_at"
 				],
 				"type": "object",
 				"description": "From T, pick a set of properties whose keys are in the union K"
@@ -185,7 +190,7 @@
 			"PerformanceCreationParams": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Pick_Performance.title-or-description-or-image_url-or-start_at_"
+						"$ref": "#/components/schemas/Pick_Performance.title-or-description-or-image_url-or-start_at-or-end_at_"
 					},
 					{
 						"properties": {

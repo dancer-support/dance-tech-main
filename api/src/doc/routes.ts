@@ -67,14 +67,14 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Pick_Performance.title-or-description-or-image_url-or-start_at_": {
+    "Pick_Performance.title-or-description-or-image_url-or-start_at-or-end_at_": {
         "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"description":{"dataType":"string","required":true},"image_url":{"dataType":"string","required":true},"title":{"dataType":"string","required":true},"start_at":{"dataType":"datetime","required":true}},"validators":{}},
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"description":{"dataType":"string","required":true},"image_url":{"dataType":"string","required":true},"title":{"dataType":"string","required":true},"start_at":{"dataType":"datetime","required":true},"end_at":{"dataType":"datetime","required":true}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "PerformanceCreationParams": {
         "dataType": "refAlias",
-        "type": {"dataType":"intersection","subSchemas":[{"ref":"Pick_Performance.title-or-description-or-image_url-or-start_at_"},{"dataType":"nestedObjectLiteral","nestedProperties":{"dancer_ids":{"dataType":"array","array":{"dataType":"double"}}}}],"validators":{}},
+        "type": {"dataType":"intersection","subSchemas":[{"ref":"Pick_Performance.title-or-description-or-image_url-or-start_at-or-end_at_"},{"dataType":"nestedObjectLiteral","nestedProperties":{"dancer_ids":{"dataType":"array","array":{"dataType":"double"}}}}],"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 };

@@ -5,7 +5,7 @@ import Dancer from "../entities/Dancer";
 // A post request should not contain an id.
 export type PerformanceCreationParams = Pick<
   Performance,
-  "title" | "description" | "image_url" | "start_at"
+  "title" | "description" | "image_url" | "start_at" | "end_at"
 > & {
   dancer_ids?: number[];
 };
@@ -25,12 +25,13 @@ export class PerformanceService {
   public async create(
     requestBody: PerformanceCreationParams
   ): Promise<Performance> {
-    const { title, description, image_url, start_at, dancer_ids } = requestBody;
+    const { title, description, image_url, start_at, end_at, dancer_ids } = requestBody;
     const performance = new Performance();
     performance.title = title || "";
     performance.description = description || "";
     performance.image_url = image_url || "";
-    performance.start_at = start_at || "";
+    performance.start_at = start_at || null;
+    performance.end_at = end_at || null;
 
     if (Array.isArray(dancer_ids) && dancer_ids.length) {
       const dancers = (

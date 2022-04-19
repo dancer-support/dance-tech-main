@@ -175,9 +175,11 @@ CREATE TABLE public.performance (
     title character varying NOT NULL,
     description character varying NOT NULL,
     image_url character varying NOT NULL,
-    start_at character varying NOT NULL,
+    start_at timestamp without time zone NOT NULL,
+    end_at timestamp without time zone NOT NULL,
     created_at timestamp(0) without time zone DEFAULT now() NOT NULL,
-    updated_at timestamp(0) without time zone DEFAULT now() NOT NULL
+    updated_at timestamp(0) without time zone DEFAULT now() NOT NULL,
+    "theaterId" integer
 );
 
 
@@ -218,6 +220,41 @@ ALTER SEQUENCE public.performance_id_seq OWNED BY public.performance.id;
 
 
 --
+-- Name: theater; Type: TABLE; Schema: public; Owner: admin
+--
+
+CREATE TABLE public.theater (
+    id integer NOT NULL,
+    name character varying NOT NULL,
+    location character varying NOT NULL
+);
+
+
+ALTER TABLE public.theater OWNER TO admin;
+
+--
+-- Name: theater_id_seq; Type: SEQUENCE; Schema: public; Owner: admin
+--
+
+CREATE SEQUENCE public.theater_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.theater_id_seq OWNER TO admin;
+
+--
+-- Name: theater_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: admin
+--
+
+ALTER SEQUENCE public.theater_id_seq OWNED BY public.theater.id;
+
+
+--
 -- Name: typeorm_metadata; Type: TABLE; Schema: public; Owner: admin
 --
 
@@ -248,6 +285,13 @@ ALTER TABLE ONLY public.performance ALTER COLUMN id SET DEFAULT nextval('public.
 
 
 --
+-- Name: theater id; Type: DEFAULT; Schema: public; Owner: admin
+--
+
+ALTER TABLE ONLY public.theater ALTER COLUMN id SET DEFAULT nextval('public.theater_id_seq'::regclass);
+
+
+--
 -- Data for Name: dancer; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
@@ -262,10 +306,10 @@ COPY public.dancer (id, first_name_en, last_name_en, description, image_url, cre
 -- Data for Name: performance; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
-COPY public.performance (id, title, description, image_url, start_at, created_at, updated_at) FROM stdin;
-1	白鳥の湖	鬼才アダム・クーパー振付、男性だけの白鳥の湖。	https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__340.jpg	2022-04-09T19:00+09:00	2022-04-09 07:45:03	2022-04-09 07:45:03
-2	くるみ割り人形	クリスマスといえば、くるみ割り人形。	https://media.istockphoto.com/photos/picturesque-morning-in-plitvice-national-park-colorful-spring-scene-picture-id1093110112	2022-04-16T19:00+09:00	2022-04-09 07:46:17	2022-04-09 07:46:17
-3	眠れる森の美女	チャイコフスキーの一大スペクタクル。	https://images.pexels.com/photos/302743/pexels-photo-302743.jpeg	2022-04-30T19:00+09:00	2022-04-09 07:47:31	2022-04-09 07:47:31
+COPY public.performance (id, title, description, image_url, start_at, end_at, created_at, updated_at, "theaterId") FROM stdin;
+4	くるみ割り人形	クリスマスの風物詩	https://media.istockphoto.com/photos/picturesque-morning-in-plitvice-national-park-colorful-spring-scene-picture-id1093110112	2022-04-19 12:31:46.512	2022-04-19 12:31:46.512	2022-04-19 12:33:00	2022-04-19 12:33:00	\N
+6	眠れる森の美女	誰が姫を起こすのか	https://images.pexels.com/photos/302743/pexels-photo-302743.jpeg	2022-04-23 09:00:00.512	2022-04-19 12:00:00.512	2022-04-19 12:35:34	2022-04-19 12:35:34	\N
+5	白鳥の湖	白鳥の舞いを見よ	https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__340.jpg	2022-04-19 12:31:46.512	2022-04-19 12:31:46.512	2022-04-19 12:34:25	2022-04-19 12:34:25	\N
 \.
 
 
@@ -274,12 +318,20 @@ COPY public.performance (id, title, description, image_url, start_at, created_at
 --
 
 COPY public.performance_dancers_dancer ("performanceId", "dancerId") FROM stdin;
-1	1
-1	2
-1	3
-2	3
-3	2
-3	3
+4	1
+5	1
+5	2
+5	3
+6	2
+6	3
+\.
+
+
+--
+-- Data for Name: theater; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+COPY public.theater (id, name, location) FROM stdin;
 \.
 
 
@@ -302,7 +354,14 @@ SELECT pg_catalog.setval('public.dancer_id_seq', 3, true);
 -- Name: performance_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('public.performance_id_seq', 3, true);
+SELECT pg_catalog.setval('public.performance_id_seq', 6, true);
+
+
+--
+-- Name: theater_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('public.theater_id_seq', 1, false);
 
 
 --
@@ -319,6 +378,14 @@ ALTER TABLE ONLY public.dancer
 
 ALTER TABLE ONLY public.performance
     ADD CONSTRAINT "PK_bd775d560f1a8d8e0e2e43fc57f" PRIMARY KEY (id);
+
+
+--
+-- Name: theater PK_c70874202894cfb1575a5b2b743; Type: CONSTRAINT; Schema: public; Owner: admin
+--
+
+ALTER TABLE ONLY public.theater
+    ADD CONSTRAINT "PK_c70874202894cfb1575a5b2b743" PRIMARY KEY (id);
 
 
 --
@@ -357,6 +424,14 @@ ALTER TABLE ONLY public.performance_dancers_dancer
 
 ALTER TABLE ONLY public.performance_dancers_dancer
     ADD CONSTRAINT "FK_ace318637f0972d3090a1d3fec3" FOREIGN KEY ("dancerId") REFERENCES public.dancer(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: performance FK_ae29f7ec71c62ebb6c0e28e8589; Type: FK CONSTRAINT; Schema: public; Owner: admin
+--
+
+ALTER TABLE ONLY public.performance
+    ADD CONSTRAINT "FK_ae29f7ec71c62ebb6c0e28e8589" FOREIGN KEY ("theaterId") REFERENCES public.theater(id);
 
 
 --
