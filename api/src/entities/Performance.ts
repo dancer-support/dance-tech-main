@@ -4,17 +4,21 @@ import {
   Entity,
   JoinTable,
   ManyToMany,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
 import Dancer from "./Dancer";
+import Theater from "./Theater";
 
 export interface IPerformance {
   id: number;
   title: string;
   description?: string;
   image_url?: string;
-  start_at?: string;
+  start_at?: Date;
+  end_at?: Date;
+  theater: Theater;
   dancers: Dancer[] | null;
   created_at: Date;
   updated_at: Date;
@@ -31,7 +35,12 @@ class Performance implements IPerformance {
   @Column()
   public image_url!: string;
   @Column()
-  public start_at!: string;
+  public start_at!: Date;
+  @Column()
+  public end_at!: Date;
+
+  @ManyToOne(() => Theater, (theater: Theater) => theater.performances)
+  public theater!: Theater;
 
   @ManyToMany(() => Dancer)
   @JoinTable()

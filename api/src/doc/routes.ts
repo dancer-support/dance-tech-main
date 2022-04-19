@@ -46,7 +46,9 @@ const models: TsoaRoute.Models = {
             "title": {"dataType":"string","required":true},
             "description": {"dataType":"string","required":true},
             "image_url": {"dataType":"string","required":true},
-            "start_at": {"dataType":"string","required":true},
+            "start_at": {"dataType":"datetime","required":true},
+            "end_at": {"dataType":"datetime","required":true},
+            "theater": {"ref":"Theater","required":true},
             "dancers": {"dataType":"union","subSchemas":[{"dataType":"array","array":{"dataType":"refObject","ref":"Dancer"}},{"dataType":"enum","enums":[null]}],"required":true},
             "created_at": {"dataType":"datetime","required":true},
             "updated_at": {"dataType":"datetime","required":true},
@@ -54,9 +56,20 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Theater": {
+        "dataType": "refObject",
+        "properties": {
+            "id": {"dataType":"double","required":true},
+            "name": {"dataType":"string","required":true},
+            "location": {"dataType":"string","required":true},
+            "performances": {"dataType":"array","array":{"dataType":"refObject","ref":"Performance"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Pick_Performance.title-or-description-or-image_url-or-start_at_": {
         "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"description":{"dataType":"string","required":true},"image_url":{"dataType":"string","required":true},"title":{"dataType":"string","required":true},"start_at":{"dataType":"string","required":true}},"validators":{}},
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"description":{"dataType":"string","required":true},"image_url":{"dataType":"string","required":true},"title":{"dataType":"string","required":true},"start_at":{"dataType":"datetime","required":true}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "PerformanceCreationParams": {

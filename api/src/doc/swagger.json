@@ -88,7 +88,15 @@
 						"type": "string"
 					},
 					"start_at": {
-						"type": "string"
+						"type": "string",
+						"format": "date-time"
+					},
+					"end_at": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"theater": {
+						"$ref": "#/components/schemas/Theater"
 					},
 					"dancers": {
 						"items": {
@@ -109,12 +117,42 @@
 				"required": [
 					"id",
 					"title",
+					"theater",
 					"dancers",
 					"created_at",
 					"updated_at",
 					"description",
 					"image_url",
-					"start_at"
+					"start_at",
+					"end_at"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Theater": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					},
+					"location": {
+						"type": "string"
+					},
+					"performances": {
+						"items": {
+							"$ref": "#/components/schemas/Performance"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"location",
+					"performances"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -131,7 +169,8 @@
 						"type": "string"
 					},
 					"start_at": {
-						"type": "string"
+						"type": "string",
+						"format": "date-time"
 					}
 				},
 				"required": [
