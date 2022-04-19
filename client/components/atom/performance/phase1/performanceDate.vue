@@ -20,12 +20,14 @@ export default {
   },
   computed: {
     performanceMonth () {
-      return this.startAt.toLocaleDateString('en-US', {
+      const date = new Date(this.startAt)
+      return date.toLocaleDateString('en-US', {
         month: 'long'
       })
     },
     performanceDate () {
-      return this.startAt.toLocaleDateString('en-US', {
+      const date = new Date(this.startAt)
+      return date.toLocaleDateString('en-US', {
         day: 'numeric'
       })
     }
