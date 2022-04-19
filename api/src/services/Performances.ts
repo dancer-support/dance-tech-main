@@ -7,6 +7,7 @@ export class PerformancesService {
   public async get(): Promise<Performance[] | null> {
     const performances = await performanceRepository.find({
       relations: ["dancers", "theater"],
+      order: { start_at: "ASC" },
     });
     return performances;
   }
