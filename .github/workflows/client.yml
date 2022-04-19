@@ -6,11 +6,6 @@ on:
       - main
       - master
       - develop
-  pull_request:
-    branches:
-      - main
-      - master
-      - develop
 
 jobs:
   client_lint:

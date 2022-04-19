@@ -252,9 +252,9 @@ ALTER TABLE ONLY public.performance ALTER COLUMN id SET DEFAULT nextval('public.
 --
 
 COPY public.dancer (id, first_name_en, last_name_en, description, image_url, created_at, updated_at) FROM stdin;
-1	Yuma	Sumi	元ジョージア国立バレエ団。エンジニア。	https://en.wikipedia.org/wiki/Mikhail_Baryshnikov#/media/File:Mikhail_Baryshnikov.jpg	2022-04-09 07:41:47	2022-04-09 07:41:47
-2	Daigo	Tanaka	地主薫バレエ団。エンジニア。	https://en.wikipedia.org/wiki/Mikhail_Baryshnikov#/media/File:Mikhail_Baryshnikov.jpg	2022-04-09 07:42:39	2022-04-09 07:42:39
-3	Ryo	Takaya	元スターダンサーズバレエ団。エンジニア。	https://en.wikipedia.org/wiki/Mikhail_Baryshnikov#/media/File:Mikhail_Baryshnikov.jpg	2022-04-09 07:42:57	2022-04-09 07:42:57
+1	Yuma	Sumi	元ジョージア国立バレエ団。エンジニア。	https://cdn-japantimes.com/wp-content/uploads/2013/12/ft20131226a2a.jpg	2022-04-09 07:41:47	2022-04-09 07:41:47
+2	Daigo	Tanaka	地主薫バレエ団。エンジニア。	https://cdn-japantimes.com/wp-content/uploads/2013/12/ft20131226a2a.jpg	2022-04-09 07:42:39	2022-04-09 07:42:39
+3	Ryo	Takaya	元スターダンサーズバレエ団。エンジニア。	https://cdn-japantimes.com/wp-content/uploads/2013/12/ft20131226a2a.jpg	2022-04-09 07:42:57	2022-04-09 07:42:57
 \.
 
 
@@ -263,9 +263,9 @@ COPY public.dancer (id, first_name_en, last_name_en, description, image_url, cre
 --
 
 COPY public.performance (id, title, description, image_url, start_at, created_at, updated_at) FROM stdin;
-1	白鳥の湖	鬼才アダム・クーパー振付、男性だけの白鳥の湖。	https://en.wikipedia.org/wiki/Swan_Lake#/media/File:Swan_Lake_prodution_2008_at_the_Royal_Swedish_Opera.jpg	2022-04-09T19:00+09:00	2022-04-09 07:45:03	2022-04-09 07:45:03
-2	くるみ割り人形	クリスマスといえば、くるみ割り人形。	https://en.wikipedia.org/wiki/The_Nutcracker#/media/File:Nutcracker_design_(cropped).jpg	2022-04-16T19:00+09:00	2022-04-09 07:46:17	2022-04-09 07:46:17
-3	眠れる森の美女	チャイコフスキーの一大スペクタクル。	https://en.wikipedia.org/wiki/Sleeping_Beauty#/media/File:Henry_Meynell_Rheam_-_Sleeping_Beauty.jpg	2022-04-30T19:00+09:00	2022-04-09 07:47:31	2022-04-09 07:47:31
+1	白鳥の湖	鬼才アダム・クーパー振付、男性だけの白鳥の湖。	https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__340.jpg	2022-04-09T19:00+09:00	2022-04-09 07:45:03	2022-04-09 07:45:03
+2	くるみ割り人形	クリスマスといえば、くるみ割り人形。	https://media.istockphoto.com/photos/picturesque-morning-in-plitvice-national-park-colorful-spring-scene-picture-id1093110112	2022-04-16T19:00+09:00	2022-04-09 07:46:17	2022-04-09 07:46:17
+3	眠れる森の美女	チャイコフスキーの一大スペクタクル。	https://images.pexels.com/photos/302743/pexels-photo-302743.jpeg	2022-04-30T19:00+09:00	2022-04-09 07:47:31	2022-04-09 07:47:31
 \.
 
 
