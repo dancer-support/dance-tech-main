@@ -8,7 +8,7 @@
         <NuxtLink :to="links[i]">
           <p>{{ performance.title }}</p>
           <div class="d-flex">
-            <Location :location-name="location" />
+            <Location :location-name="locations[i]" />
             <PerformanceDate :start-at="performance.start_at" />
           </div>
         </NuxtLink>
@@ -31,13 +31,13 @@ export default {
   name: 'PagePerformances',
   components,
   async asyncData ({ $axios }) {
-    const location = '東京'
     const { performances } = await $axios.$get('/performances')
     const links = performances.map(performance => `/performances/${performance.id}`)
+    const locations = performances.map(performance => performance.theater?.location ?? '未定')
     return {
       performances,
       links,
-      location
+      locations
     }
   }
 }

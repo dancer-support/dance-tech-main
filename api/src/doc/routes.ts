@@ -10,6 +10,10 @@ import { DancersController } from './../controllers/Dancers';
 import { PerformanceController } from './../controllers/Performance';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { PerformancesController } from './../controllers/Performances';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { TheaterController } from './../controllers/Theater';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { TheatersController } from './../controllers/Theaters';
 import * as express from 'express';
 
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
@@ -46,7 +50,9 @@ const models: TsoaRoute.Models = {
             "title": {"dataType":"string","required":true},
             "description": {"dataType":"string","required":true},
             "image_url": {"dataType":"string","required":true},
-            "start_at": {"dataType":"string","required":true},
+            "start_at": {"dataType":"datetime","required":true},
+            "end_at": {"dataType":"datetime","required":true},
+            "theater": {"dataType":"union","subSchemas":[{"ref":"Theater"},{"dataType":"enum","enums":[null]}],"required":true},
             "dancers": {"dataType":"union","subSchemas":[{"dataType":"array","array":{"dataType":"refObject","ref":"Dancer"}},{"dataType":"enum","enums":[null]}],"required":true},
             "created_at": {"dataType":"datetime","required":true},
             "updated_at": {"dataType":"datetime","required":true},
@@ -54,14 +60,35 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Pick_Performance.title-or-description-or-image_url-or-start_at_": {
+    "Theater": {
+        "dataType": "refObject",
+        "properties": {
+            "id": {"dataType":"double","required":true},
+            "name": {"dataType":"string","required":true},
+            "location": {"dataType":"string","required":true},
+            "performances": {"dataType":"array","array":{"dataType":"refObject","ref":"Performance"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Pick_Performance.title-or-description-or-image_url-or-start_at-or-end_at_": {
         "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"description":{"dataType":"string","required":true},"image_url":{"dataType":"string","required":true},"title":{"dataType":"string","required":true},"start_at":{"dataType":"string","required":true}},"validators":{}},
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"description":{"dataType":"string","required":true},"image_url":{"dataType":"string","required":true},"title":{"dataType":"string","required":true},"start_at":{"dataType":"datetime","required":true},"end_at":{"dataType":"datetime","required":true}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "PerformanceCreationParams": {
         "dataType": "refAlias",
-        "type": {"dataType":"intersection","subSchemas":[{"ref":"Pick_Performance.title-or-description-or-image_url-or-start_at_"},{"dataType":"nestedObjectLiteral","nestedProperties":{"dancer_ids":{"dataType":"array","array":{"dataType":"double"}}}}],"validators":{}},
+        "type": {"dataType":"intersection","subSchemas":[{"ref":"Pick_Performance.title-or-description-or-image_url-or-start_at-or-end_at_"},{"dataType":"nestedObjectLiteral","nestedProperties":{"theater_id":{"dataType":"double"},"dancer_ids":{"dataType":"array","array":{"dataType":"double"}}}}],"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Pick_Theater.name-or-location_": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"name":{"dataType":"string","required":true},"location":{"dataType":"string","required":true}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "TheaterCreationParams": {
+        "dataType": "refAlias",
+        "type": {"ref":"Pick_Theater.name-or-location_","validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 };
@@ -204,6 +231,74 @@ export function RegisterRoutes(app: express.Router) {
 
 
               const promise = controller.getPerformance.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.post('/theater',
+
+            function TheaterController_createTheater(request: any, response: any, next: any) {
+            const args = {
+                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"TheaterCreationParams"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new TheaterController();
+
+
+              const promise = controller.createTheater.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/theaters',
+
+            function TheatersController_getPerformances(request: any, response: any, next: any) {
+            const args = {
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new TheatersController();
+
+
+              const promise = controller.getTheaters.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/theaters/:id',
+
+            function TheatersController_getTheater(request: any, response: any, next: any) {
+            const args = {
+                    id: {"in":"path","name":"id","required":true,"dataType":"double"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new TheatersController();
+
+
+              const promise = controller.getTheater.apply(controller, validatedArgs as any);
               promiseHandler(controller, promise, response, undefined, next);
             } catch (err) {
                 return next(err);

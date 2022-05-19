@@ -1,6 +1,7 @@
 import Performance from "./entities/Performance";
 import Dancer from "./entities/Dancer";
 import { DataSource } from "typeorm";
+import Theater from "./entities/Theater";
 
 const AppDataSource = new DataSource({
   type: "postgres",
@@ -11,7 +12,7 @@ const AppDataSource = new DataSource({
   database: "test",
   synchronize: true,
   logging: true,
-  entities: [Performance, Dancer],
+  entities: [Performance, Dancer, Theater],
   subscribers: [],
   migrations: [],
 });
