@@ -447,7 +447,7 @@
 		},
 		"/theaters": {
 			"get": {
-				"operationId": "GetPerformances",
+				"operationId": "GetTheaters",
 				"responses": {
 					"200": {
 						"description": "Ok",
@@ -455,7 +455,7 @@
 							"application/json": {
 								"schema": {
 									"items": {
-										"$ref": "#/components/schemas/Performance"
+										"$ref": "#/components/schemas/Theater"
 									},
 									"type": "array",
 									"nullable": true
