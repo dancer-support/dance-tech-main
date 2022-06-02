@@ -1,17 +1,17 @@
 <template>
   <v-container>
-    <v-row
-      v-for="performance in performances"
-      :key="performance.id"
-    >
+    <v-row v-for="performance in performances" :key="performance.id">
       <v-card class="mx-auto performance-card" width="100%">
         <NuxtLink :to="`/performances/${performance.id}`">
-          <div class="d-block">
+          <div class="d-inline-block performance-date">
             <PerformanceDate :start-at="performance.start_at" />
           </div>
-          <div class="d-block performance-description">
-            <p class="performance-title">{{ performance.title }}</p>
-            <p>{{ performanceTime }}</p>
+          <div class="d-inline-block performance-description">
+            <p class="performance-title">
+              {{ performance.title }}
+            </p>
+            <p class="performance-theater">{{ theater.name }}</p>
+            <p class="performance-time">{{ performanceTime }}</p>
             <Location :location-name="location" />
           </div>
         </NuxtLink>
@@ -57,6 +57,7 @@ export default {
 <style scoped>
 .performance-card {
   margin-bottom: 14px;
+  padding: 10px 15px;
 }
 .performance-card > a {
   text-decoration: none;
@@ -66,8 +67,18 @@ export default {
 }
 .performance-description > p {
   display: flex;
-  font-size: 16px;
   color: #3e3e3e;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
+}
+.performance-time {
+  font-size: 11px;
+  color: #3e3e3e;
+}
+.performance-theater {
+  font-size: 11px;
+  color: #3e3e3e;
+}
+.performance-date {
+  vertical-align: top;
 }
 </style>
