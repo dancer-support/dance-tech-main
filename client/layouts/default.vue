@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-main>
+    <v-main class="top-background">
       <v-container>
         <nuxt />
       </v-container>
@@ -27,3 +27,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.top-background {
+  background-color: #43CCD4;
+}
+</style>
