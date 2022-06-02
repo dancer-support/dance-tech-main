@@ -262,7 +262,7 @@ export function RegisterRoutes(app: express.Router) {
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
         app.get('/theaters',
 
-            function TheatersController_getPerformances(request: any, response: any, next: any) {
+            function TheatersController_getTheaters(request: any, response: any, next: any) {
             const args = {
             };
 
