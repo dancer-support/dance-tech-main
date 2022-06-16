@@ -1,10 +1,10 @@
 <template>
-  <v-card class="mx-auto performance-card" width="100%">
-    <NuxtLink :to="`/performances/${performance.id}`">
-      <div class="d-inline-block performance-date">
+  <v-card class="mx-auto performance-card">
+    <NuxtLink :to="`/performances/${performance.id}`" class="performance-link">
+      <div class="performance-date">
         <PerformanceDate :start-at="performance.start_at" />
       </div>
-      <div class="d-inline-block performance-description">
+      <div class="performance-description">
         <p class="performance-title">
           {{ performance.title }}
         </p>
@@ -55,12 +55,20 @@ export default {
 .performance-card {
   margin-bottom: 14px;
   padding: 10px 15px;
+  width: 100%;
+}
+.performance-link{
+  display: flex;
 }
 .performance-card > a {
   text-decoration: none;
 }
 .performance-card > a:hover {
   text-decoration: none;
+}
+.performance-description {
+  display: block;
+  max-width: 200px;
 }
 .performance-description > p {
   display: flex;
@@ -76,6 +84,8 @@ export default {
   color: #3e3e3e;
 }
 .performance-date {
-  vertical-align: top;
+  display: block;
+  max-width: 50px;
+  width: 100%;
 }
 </style>
