@@ -1,5 +1,5 @@
 <template>
-  <div class="d-block performance-block">
+  <div class="performance-block">
     <div class="d-flex performance-date">
       {{ performanceDate }}
     </div>
@@ -20,12 +20,14 @@ export default {
   },
   computed: {
     performanceMonth () {
-      return this.startAt.toLocaleDateString('en-US', {
+      const date = new Date(this.startAt)
+      return date.toLocaleDateString('en-US', {
         month: 'long'
       })
     },
     performanceDate () {
-      return this.startAt.toLocaleDateString('en-US', {
+      const date = new Date(this.startAt)
+      return date.toLocaleDateString('en-US', {
         day: 'numeric'
       })
     }
@@ -50,5 +52,6 @@ export default {
   margin: 0 auto;
   font-size: 16px;
   text-align: center;
+  color: #3e3e3e;
 }
 </style>

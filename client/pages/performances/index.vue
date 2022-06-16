@@ -1,43 +1,37 @@
 <template>
   <v-container>
-    <v-row
-      v-for="performance, i in performances"
-      :key="performance.id"
-    >
-      <v-card class="mx-auto" width="100%">
-        <NuxtLink :to="links[i]">
-          <p>{{ performance.title }}</p>
-          <div class="d-flex">
-            <Location :location-name="locations[i]" />
-            <PerformanceDate :start-at="performance.start_at" />
-          </div>
-        </NuxtLink>
-      </v-card>
+    <v-row v-for="performance in performances" :key="performance.id" class="mx-2">
+      <PerformanceCard :performance="performance" :theater="theater" :location="location" :performance-time="performanceTime" />
     </v-row>
   </v-container>
 </template>
 
 <script>
-const Location = () => import('@/components/atom/icon/location')
-const PerformanceDate = () =>
-  import('@/components/atom/performance/phase0/performanceDate')
+const PerformanceCard = () => import('@/components/modules/card/performanceCard')
 
 const components = {
-  Location,
-  PerformanceDate
+  PerformanceCard
 }
 
 export default {
   name: 'PagePerformances',
   components,
   async asyncData ({ $axios }) {
+    const location = '東京'
+    const now = new Date()
+    const time = `${now.getHours()}:${now.getMinutes()}`
+    const performanceTime = `${time}-${time}`
+    const theater = {
+      id: '1',
+      name: '新国立劇場'
+    }
+
     const { performances } = await $axios.$get('/performances')
-    const links = performances.map(performance => `/performances/${performance.id}`)
-    const locations = performances.map(performance => performance.theater?.location ?? '未定')
     return {
       performances,
-      links,
-      locations
+      performanceTime,
+      location,
+      theater
     }
   }
 }

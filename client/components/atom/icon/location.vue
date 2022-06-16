@@ -29,12 +29,15 @@ export default {
 
 <style scoped>
 .location-header {
-  width: 50%;
+  width: 250px;
+  height: 25px;
 }
 .location-icon {
   margin: 0.5rem;
+  margin-left: 0;
 }
 .location-name {
+  width: 100%;
   margin: 0.25rem;
   color: #3E3E3E;
 }
