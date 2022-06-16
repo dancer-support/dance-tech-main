@@ -8,11 +8,11 @@
         <p class="performance-title">
           {{ performance.title }}
         </p>
-        <p class="performance-theater">
-          {{ theater.name }}
-        </p>
         <p class="performance-time">
           {{ performanceTime }}
+        </p>
+        <p class="performance-theater">
+          {{ theater.name }}
         </p>
         <Location :location-name="location" />
       </div>
@@ -57,7 +57,7 @@ export default {
   padding: 10px 15px;
   width: 100%;
 }
-.performance-link{
+.performance-link {
   display: flex;
 }
 .performance-card > a {

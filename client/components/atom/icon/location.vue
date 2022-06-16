@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex d-inline-flex location-header">
-    <v-icon class="location-icon" aria-label="location" role="img" aria-hidden="false" size="10">
+    <v-icon class="location-icon" aria-label="location" role="img" aria-hidden="false" size="12">
       {{ location }}
     </v-icon>
     <div class="location-name text-caption">
